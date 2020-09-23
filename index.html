@@ -1,0 +1,432 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Classes and Objects pt1</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/serif.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
+					<textarea data-template>
+## Agenda
+* tbd
+
+Note:
+This will only display in the notes window.
+yhjj
+hjhkhk
+
+hjh
+* a
+* b
+
+---
+
+## Problemet
+
+* Ni har jobbat med funktioner och variabler
+* Kan bli grötigt i stora projekt
+* Med klasser kan man dela upp koden modulärt
+
+---
+
+## Vad är en klass ?
+
+En gruppering av funktioner och variabler
+
+--
+<!-- .slide: data-transition="slide-in fade-out" -->
+
+```cpp[1|2|4-6]
+class SomeClass {
+	float piIsh;
+
+	void calcPiIsh(){
+		...
+	}
+};
+```
+
+--
+<!-- .slide: data-transition="fade slide-out" -->
+Funktioner i en klass kan nå variablerna i densamma
+
+```cpp[4-6]
+class SomeClass {
+	float piIsh;
+
+	void calcPiIsh(){
+		piIsh = 22.0f / 7.0f;
+	}
+};
+```
+
+---
+
+Hur används klasser?
+
+För att skapa objekt!<!-- .element: class="fragment" -->
+
+--
+<!-- .slide: data-transition="slide-in fade" -->
+
+```cpp[11]
+class SomeClass {
+	float piIsh;
+
+	void calcPiIsh(){
+		piIsh = 22.0f / 7.0f;
+	}
+};
+
+int main()
+{
+    SomeClass myClass;
+}
+```
+
+```bash[|1|2|4]
+Warning(s):
+35285585/source.cpp:16:15: warning: unused variable 'myClass' \
+     [-Wunused-variable]
+    SomeClass myClass;
+              ^
+1 warning generated.
+```
+<!-- .element: class="fragment" -->
+
+--
+
+<!-- .slide: data-transition="fade" -->
+	
+```cpp[12]
+class SomeClass {
+	float piIsh;
+
+	void calcPiIsh(){
+		piIsh = 22.0f / 7.0f;
+	}
+};
+
+int main()
+{
+    SomeClass myClass;
+    myClass.calcPiIsh());
+}
+```
+
+```bash[|1|6|7]
+Error(s):
+240841000/source.cpp:17:13: error: 'memberFunctionA' is a  \
+    member of 'SomeClass'
+    myClass.calcPiIsh();
+            ^
+240841000/source.cpp:7:7: note: implicitly declared private here
+        void calcPiIsh(){
+             ^
+1 error generated.
+```
+<!-- .element: class="fragment" -->
+
+--
+<!-- .slide: data-transition="fade" -->
+	
+```cpp[2,4]
+class SomeClass {
+  private:
+	float piIsh;
+  public:
+	void calcPiIsh(){
+		piIsh = 22.0f / 7.0f;
+	}
+};
+
+int main()
+{
+    SomeClass myClass;
+    myClass.calcPiIsh());
+}
+```
+
+```bash
+Compilation time: 0.25 sec
+```
+<!-- .element: class="fragment" -->
+
+---
+
+## Vad är `private` och `public`?
+
+* `private` - medlemmar nåbara *endast inom* klassen
+* `public` - medlemmar nåbara *utanför* klassen
+
+Medlemmar är `private` om inget annat anges
+
+---
+
+## Varför `public`/`private`?
+
+För att strukturera upp koden
+<!-- .element: class="fragment" -->
+
+---
+
+## Abstraktion
+
+*Användaren behöver inte veta vad som händer under huven*
+
+* Vet du hur en bils förbränningsmotor fungerar?
+* Behöver du veta det? 
+* Räcker det med att veta vad som händer när du trycker på gaspedalen?
+
+---
+
+## Inkapsling (Encapsulation)
+
+*Saker som hänger ihop ska samlas*
+
+---
+
+```cpp[|3-4|6-9|11-22]
+class Car {
+  private:
+	float speed;
+	float maxSpeed;
+  
+	void sanityCheckSpeed(){
+		if (speed < 0) speed = 0.0f;
+		if (speed > maxSpeed) speed = maxSpeed;
+	}
+  public:
+	void setup(float p_maxSpeed){
+		model = p_model;
+		maxSpeed = p_maxSpeed;
+	}
+	void accelerate(float pedalFactor){
+		speed += 10 * pedalFactor;
+		sanityCheckSpeed();
+	}
+	void applyBreak(float pedalFactor){
+		speed -= 10 * pedalFactor;
+		sanityCheckSpeed();
+	}
+};
+```
+<!-- .element: class="r-stretch" -->
+
+--
+
+## Nu provkör vi!
+
+```cpp[|7-8| 10-12 | 13-14 | 7-8 ]
+class Car {
+  ...
+};
+
+int main()
+{
+    Car minVolvo242Gl;
+    minVolvo242Gl.setup(120);
+    
+    minVolvo242Gl.accelerate(1.0f) // Full gas!
+    minVolvo242Gl.accelerate(1.0f) // Bra drag!
+    minVolvo242Gl.accelerate(1.0f) // Nu börjar det gå lite fort!
+    minVolvo242Gl.applyBreak(42.0f) // Rådjur!!!
+    minVolvo242Gl.applyBreak(1.0f) // Puh!!! Vi överlevde!
+}
+```
+hmm... inte så najs
+<!-- .element: class="fragment" -->
+
+---
+
+## Konstruktorer
+
+* Körs när objekt skapas
+* Tvinga medlemsvariabler att bli initialiserade
+
+--
+
+```cpp[1,11-14]
+class Car {
+  private:
+	float speed;
+	float maxSpeed;
+  
+	void sanityCheckSpeed(){
+		if (speed < 0) speed = 0.0f;
+		if (speed > maxSpeed) speed = maxSpeed;
+	}
+  public:
+	Car(float p_maxSpeed){
+		model = p_model;
+		maxSpeed = p_maxSpeed;
+	}
+	void accelerate(float pedalFactor){
+		speed += 10 * pedalFactor;
+		sanityCheckSpeed();
+	}
+	void applyBreak(float pedalFactor){
+		speed -= 10 * pedalFactor;
+		sanityCheckSpeed();
+	}
+};
+```
+<!-- .element: class="r-stretch" -->
+
+--
+
+## Nu provkör vi igen!
+
+```cpp[7]
+class Car {
+  ...
+};
+
+int main()
+{
+    Car minNyaVolvo242Gl(120);
+    
+    minNyaVolvo242Gl.accelerate(1.0f) // Full gas!
+    minNyaVolvo242Gl.accelerate(1.0f) // Bra drag!
+    minNyaVolvo242Gl.accelerate(1.0f) // Det börjar gå lite fort...
+    minNyaVolvo242Gl.applyBreak(42.0f) // Rådjur!!!
+    minNyaVolvo242Gl.applyBreak(1.0f) // Puh!!! Vi överlevde!
+}
+```
+hmm... najsigare!
+
+--
+<!-- .slide: data-transition="slide-in fade" -->
+
+```cpp[6]
+class Car {
+	private:
+	float speed;
+	float maxSpeed;
+  	...
+	Car(float p_maxSpeed){
+		model = p_model;
+		maxSpeed = p_maxSpeed;
+	...
+};
+```
+
+Varför heter `p_maxSpeed`, inte `maxSpeed`... ?
+
+--
+<!-- .slide: data-transition="fade" -->
+
+```cpp[4,8]
+class Car {
+	private:
+	float speed;
+	float maxSpeed;
+  	...
+	Car(float p_maxSpeed){
+		model = p_model;
+		maxSpeed = p_maxSpeed;
+	...
+};
+```
+
+En medlemsvariabel heter `maxSpeed`
+
+--
+<!-- .slide: data-transition="fade slide-out" -->
+
+```cpp[4,6,8]
+class Car {
+	private:
+	float speed;
+	float maxSpeed;
+  	...
+	Car(float p_maxSpeed){
+		model = p_model;
+		maxSpeed = p_maxSpeed;
+	...
+};
+```
+Om medlemsvariabeln inte ska *skuggas* måste parametern heta något annat
+
+--
+
+Typ `p_maxSpeed`
+
+Eller...
+<!-- .element: class="fragment" -->
+
+---
+
+## Låt mig introducera
+
+--
+
+## `this`
+
+Ett ***nyckelord*** (***keyword***) som fungerar som en ***pekare*** till det ***aktuella objektet***
+
+--
+
+När du i en ***medlemsfunktion*** använt dig av en annan ***medlem*** har `this` ***implicit*** använts
+
+--
+
+D.v.s., kompilatorn har lagt till `this` åt dig
+
+--
+
+```cpp[4-6]
+class SomeClass {
+	float piIsh;
+
+	void calcPiIsh(){
+		piIsh = 22.0f / 7.0f;
+	}
+};
+```
+
+blir
+
+```cpp[4-6]
+class SomeClass {
+	float piIsh;
+
+	void calcPiIsh(){
+		this->piIsh = 22.0f / 7.0f;
+	}
+};
+```
+
+					</textarea>
+				  </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
