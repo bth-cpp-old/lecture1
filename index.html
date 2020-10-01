@@ -19,19 +19,24 @@
 				<section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
 					<textarea data-template>
 ## Föreläsning 1
-### Introduktion till C++
+#### Introduktion till C++
 
 
 ---
 
 
 ## Agenda
-* Vad är C/C++
+* Vad är C++
+* Kompilering
 * Gå från Python till C++
 
 ---
 
-## Varför ska du lära dig C++?
+### Vad är C++?
+
+---
+
+### Varför ska du lära dig C++?
 
 --
 
@@ -42,18 +47,6 @@
 * <span class="fragment strike">Högre prestanda</span>
 <p class="fragment fade-up"><b>Mer att hålla koll på!</b></p>
 
-<!-- * Mer förståelse
-* Mer Kontroll
-* <span class="fragment strike">Högre prestanda</span> -->
-
-<!-- <span class="fragment highlight-red" data-fragment-index="2">
-<span class="fragment" data-fragment-index="1">
-Mer att hålla koll på</span>
-</span> -->
-
-<!-- <p class="fragment">Men kräver </p> -->
-
-
 --
 
 ### Skriva robusta system
@@ -62,60 +55,254 @@ Mer att hålla koll på</span>
 Renderingsmotor - Ljudmotor - Databaser - Operativsystem
 </p>
 
----
+					</textarea>
+				</section>
 
-## Skillnader Python och C++
+				<section>
+					<section>
+					<h2>Kompilering</h2>
+					</section>
+				
+						<section data-auto-animate>
+							<div data-id="box" style="margin: auto; height: 200px; width: 200px; background: blue; text-align: center;">.py</div>
+						</section>
+						<section data-auto-animate>
+							<div data-id="box" style="margin: auto; height: 200px; width: 200px; background: blue; text-align: center; float: left">.cpp</div>
+							<div data-id="box" style="margin: auto; height: 200px; width: 200px; background: blue; text-align: center; float: right">.hpp</div>
+						</section>
+						  
+				</section>
 
---
+				<section>
+					<section>
+						<h3>Att gå från Python till C++</h3>
+					</section>
 
+					<section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
+						<textarea data-template>
 #### Övergripande skillnader
 
 |								| Python			| C++				|
 | ----------------------------- | ----------------- | ----------------- |
 | **Kodläsning**				| Interpreteras		| Kompileras		|
 | **Exekvering**				| Relativt långsamt	| Relativt snabbt	|
-| **Kod kontra funktionalitet** | Lågt				| Högt				|
+| **Kod kontra funktionalitet** | Låg				| Hög				|
 | **Kontroll**					| Låg				| Hög				|
-| **Bra för**					| Prototyper		| Robusta system	|
+| **Bra för**					| Prototyper		| System			|
 
---
+---
 
-#### Skillnader i kod
+#### Skillnader under programmering
 
 | 						| Python         	| C++          		|
 | --------------------- | ----------------- | ----------------- |
 | **Variabler** 		| Dynamisk typning	| Statisk typning	|
 | **Kodblock**			| Indentering		| { }				|
-| **Avsluta uttryck**	|					| ;					|
+| **Uttryck**			| 					| ;					|
 | **Hantering minne** 	| Implicit (automatisk)	| Explicit (manuell) |
 | **Filtyper**			| .py				| .cpp, .hpp		|
+						</textarea>
+					</section>
+
+					<section data-auto-animate>
+						<pre><code data-line-numbers># Python
+print("Hello World!")
+						</code></pre>
+						<pre data-id="code-animation"><code data-line-numbers>// C++
+	std::cout << "Hello World!" << std::endl;
+						</code></pre>
+					</section>
+					<section data-auto-animate>
+						<pre><code data-line-numbers># Python
+print("Hello World!")
+						</code></pre>
+						<pre data-id="code-animation"><code data-line-numbers>// C++
+#include &lt;iostream&gt;
+int main()
+{
+	std::cout << "Hello World!" << std::endl;
+	return 0;
+}
+						</code></pre>
+					</section>
+
+				</section>
+
+				<section>
+					<section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
+						<textarea data-template>
+
+							## Python -> C++
+							### Generella skillnader	
+
+							---
+
+							## Entrypoint
+							#### Där exekvering börjar <!-- .element: class="fragment" -->
+
+						
+						</textarea>
+					</section>
+
+					<section data-auto-animate>
+						<h4>Entrypoint - Python</h4>
+						<pre data-id="code-animation"><code class="python" data-trim data-line-numbers="|4">
+							def math_add(a, b):
+								return a + b
+
+							num_a = 42
+							num_b = 1338
+							num_sum = math_add(a, b)
+							print(num_sum)
+						</code></pre>
+					</section>
+					<section data-auto-animate>
+						<h4>Entrypoint - Python</h4>
+						<pre data-id="code-animation"><code class="python" data-trim data-line-numbers="4">
+							def math_add(a, b):
+								return a + b
+
+							num_a = 42
+							num_b = 1338
+							num_sum = math_add(a, b)
+							print(num_sum)
+						</code></pre>
+						<h4>Entrypoint - C++</h4>
+						<pre><code class="cpp" data-trim data-line-numbers>
+							int main()
+							{
+								// Code start here
+							}
+						</code></pre>
+					</section>
+
+					<section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
+						<textarea data-template>
+							## #include
+							#### Importera kodfiler eller bibliotek <!-- .element: class="fragment" -->
+						</textarea>
+					</section>
+
+					<section data-auto-animate>
+						<h4>Import - Python</h4>
+						<pre data-id="code-python"><code class="python" data-trim data-line-numbers="|1|4">
+							import random
+
+							# Random number between 10 and 100 (both included)
+							nr_of_villagers = random.randint(10, 100)
+						</code></pre>
+					</section>
+					<section data-auto-animate>
+						<h4>Import - Python</h4>
+						<pre data-id="code-python"><code class="python" data-trim data-line-numbers="2">
+							import random
+
+							# Random number between 10 and 100 (both included)
+							nr_of_villagers = random.randint(10, 100)
+						</code></pre>
+						<h4>#include - C++</h4>
+						<pre data-id="code-cpp"><code class="cpp" data-trim data-line-numbers="|1|1,4">
+							#include &lt;cstdlib&gt;
+
+							// Random number between 10 and 100 (both included)
+							int nr_of_villagers = std::rand()
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Två varianter av #include</h3>
+
+						<pre data-id="code-cpp"><code class="cpp" data-trim data-line-numbers>
+							#include &lt;cstdlib&gt;
+							#include "functions.h"
+						</code></pre>
+
+						<p data-id="point-1" class="fragment">&lt; &gt; för standardbibliotek</p>
+						<p data-id="point-2" class="fragment">" " för filer i ditt projekt</p>
+						<p data-id="point-3" class="fragment">Kom ihåg att " " innehåller en filväg</p>
+					</section>
+					<section data-auto-animate>
+						<h3>Två varianter av #include</h3>
+
+						<p data-id="point-1">&lt; &gt; för standardbibliotek</p>
+						<p data-id="point-2">" " för filer i ditt projekt</p>
+						<p data-id="point-3">Kom ihåg att " " innehåller en filväg</p>
+
+						<pre data-id="code-cpp"><code class="cpp" data-trim data-line-numbers>
+							#include "core/graphics.h"
+							#include "../math/vectormath.h"
+							#include "/work/username/src/project/app/submodule/thing.h"
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+							<h4>#include klistrar in innehållet i filen i din fil</h4>
+							header.hpp
+							<pre data-id="code-hpp"><code class="cpp" data-trim data-line-numbers>
+								#ifndef MY_HEADER
+								#define MY_HEADER
+									void my_function();
+								#endif // MY_HEADER
+							</code></pre>
+
+							<p data-id="main-tag">main.cpp</p>
+							<pre data-id="code-cpp"><code class="cpp" data-trim data-line-numbers>
+								#include "header.hpp"
+
+								int main()
+								{
+									my_function();
+									return 0;
+								}
+							</code></pre>
+					</section>
+					<section data-auto-animate>
+						<h4>#include klistrar in innehållet i filen i din fil</h4>
+
+						<p data-id="main-tag">main.cpp</p>
+						<pre data-id="code-cpp"><code class="cpp" data-trim data-line-numbers>
+							#ifndef MY_HEADER
+							#define MY_HEADER
+								void my_function();
+							#endif // MY_HEADER
+
+							int main()
+							{
+								my_function();
+								return 0;
+							}
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Kommentarer</h3>
+					</section>
+					<section data-auto-animate>
+						<h3>Kommentarer</h3>
+						<pre data-id="code-cpp"><code class="cpp" data-trim data-line-numbers>
+							// One line of comments
+
+							/*
+								Multiple lines
+								of comments
+							*/
+						</code></pre>
+					</section>
+				</section>
 
 
 
-
-					</textarea>
-				  </section>
-
-
-<section>
-	<section>
-	<h1>Kompilering</h1>
-	</section>
-
-		<section data-auto-animate>
-			<div data-id="box" style="margin: auto; height: 200px; width: 200px; background: blue; text-align: center;">.py</div>
-		</section>
-		<section data-auto-animate>
-			<div data-id="box" style="margin: auto; height: 200px; width: 200px; background: blue; text-align: center; float: left">.cpp</div>
-			<div data-id="box" style="margin: auto; height: 200px; width: 200px; background: blue; text-align: center; float: right">.hpp</div>
-		</section>
-		  
-</section>
 
 				<section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
 					<textarea data-template>
 
-# Ny slide
+## Python -> C++
+### Variabler och Datatyper
+
+--
+
+## Hej
+
 					</textarea>
 				</section>
 		  </div>
