@@ -58,20 +58,11 @@ Renderingsmotor - Ljudmotor - Databaser - Operativsystem
 					</textarea>
 				</section>
 
-				<section>
-					<section>
-					<h2>Kompilering</h2>
-					</section>
 				
-						<section data-auto-animate>
-							<div data-id="box" style="margin: auto; height: 200px; width: 200px; background: blue; text-align: center;">.py</div>
-						</section>
-						<section data-auto-animate>
-							<div data-id="box" style="margin: auto; height: 200px; width: 200px; background: blue; text-align: center; float: left">.cpp</div>
-							<div data-id="box" style="margin: auto; height: 200px; width: 200px; background: blue; text-align: center; float: right">.hpp</div>
-						</section>
-						  
-				</section>
+
+
+
+
 
 				<section>
 					<section>
@@ -289,19 +280,312 @@ int main()
 						</code></pre>
 					</section>
 				</section>
+			
+				<section>
+					<section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
+						<textarea data-template>
+							## Kompilering
+						</textarea>
+					</section>
 
+					<section data-auto-animate>
+						<h3>Python är ett intepreterat språk</h3>
+					</section>
+					<section data-auto-animate>
+						<h3>Python är ett intepreterat språk</h3>
+						<p>Ditt program är instruktioner för en <b>intepretator</b></p>
+					</section>
+					<section data-auto-animate>
+						<h3>Python är ett intepreterat språk</h3>
+						<p>Ditt program är instruktioner för en <b>intepretator</b></p>
+						<pre><code data-trim>py my_file.py</code></pre>
+					</section>
+					<section data-auto-animate>
+						<h3>Python är ett intepreterat språk</h3>
+						<p>Ditt program är instruktioner för en <b>intepretator</b></p>
+						<pre><code data-trim>python.exe my_file.py</code></pre>
+					</section>
+					<section data-auto-animate>
+						<h3>Python är ett intepreterat språk</h3>
+						<p>Ditt program är instruktioner för en <b>intepretator</b></p>
+						<pre><code data-trim>python.exe my_file.py</code></pre>
+						<p>Programmet python.exe tar in din fil som argument</p>
+					</section>
+
+					<section data-auto-animate>
+						<p>Datorn läser intruktioner i maskinkod</p>
+						<pre data-id="code-animation"><code>... 0111 0101 1101 0110 1010 1100 1101 1010 1001 1010 1010 ...</code></pre>
+					</section>
+					<section data-auto-animate>
+						<p>Men detta är inte vad vi programmerar, eller?</p>
+						<pre data-id="code-animation"><code>... 0111 0101 1101 0110 1010 1100 1101 1010 1001 1010 1010 ...</code></pre>
+					</section>
+					<section data-auto-animate>
+						<p>Detta är vi programmerar</p>
+						<pre data-id="code-animation"><code class=python data-line-numbers># ...
+for nr in numbers:
+	sum += nr
+# ...
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Programkod till maskinkod</h3>
+					</section>
+					<section data-auto-animate>
+						<h3>Programkod till maskinkod</h3>
+						<ul>
+							<li>Vi kan ej läsa maskinkod som en datorn</li>
+							<li>Skriv läsbar kod -> konvertera till maskinkod</li>
+						</ul>
+					</section>
+					<section data-auto-animate>
+						<h3>Programkod till maskinkod</h3>
+						<ul>
+							<li>Vi kan ej läsa maskinkod som en datorn</li>
+							<li>Skriv läsbar kod -> konvertera till maskinkod</li>
+							<li>Detta kallas att <b>komilera</b></li>
+							<li>Detta sköts av en <b>kompilator</b></li>
+						</ul>
+					</section>
+
+					
+
+					<section data-auto-animate>
+						<div class="grid-container" style="display: inline-grid; grid-template-columns: auto auto auto; padding: 10px; grid-gap: -1px">
+							<div data-id="file0" class="grid-item" style="background-color: rgba(100, 100, 200, 1.0); padding: 20px"></div>
+							<div data-id="file1" class="grid-item" style="background-color: rgba(100, 100, 200, 1.0); padding: 20px">program.py</div>
+							<div data-id="file2" class="grid-item" style="background-color: rgba(100, 100, 200, 1.0); padding: 20px"></div>
+						</div>
+						<p>Ett program skrivet i python</p>
+					</section>
+					<section data-auto-animate>
+						<div class="grid-container" style="display: inline-grid; grid-template-columns: auto auto auto; padding: 10px; grid-gap: 10px">
+							<div data-id="file0" class="grid-item" style="background-color: rgba(100, 100, 200, 1.0); padding: 20px">main.py</div>
+							<div data-id="file1" class="grid-item" style="background-color: rgba(100, 100, 200, 1.0); padding: 20px">logic.py</div>
+							<div data-id="file2" class="grid-item" style="background-color: rgba(100, 100, 200, 1.0); padding: 20px">math.py</div>
+						</div>
+						<p>Uppdelat i olika moduler</p>
+						<p>Dessa filer ser varandra</p>
+					</section>
+					<section data-auto-animate>
+						<div class="grid-container" style="display: inline-grid; grid-template-columns: auto auto auto; padding: 10px; grid-gap: 10px">
+							<div data-id="file0" class="grid-item" style="background-color: rgba(150, 100, 100, 1.0); padding: 20px">main.cpp</div>
+							<div data-id="file1" class="grid-item" style="background-color: rgba(150, 100, 100, 1.0); padding: 20px">logic.cpp</div>
+							<div data-id="file2" class="grid-item" style="background-color: rgba(150, 100, 100, 1.0); padding: 20px">math.cpp</div>
+						</div>
+						<p>Samma program kan skrivas i C++</p>
+						<p>Dessa filer ser inte varandra</p>
+					</section>
+					<section data-auto-animate>
+						<div class="grid-container" style="display: inline-grid; grid-template-columns: auto auto auto; padding: 10px; grid-gap: 10px">
+							<div data-id="file0" class="grid-item" style="background-color: rgba(150, 100, 100, 1.0); padding: 20px">main.cpp</div>
+							<div data-id="filehpp" class="grid-item" style="background-color: rgba(150, 100, 100, 1.0); padding: 20px; grid-column-start: 2; grid-column-end: 4">api.hpp</div>
+							<div data-id="file1" class="grid-item" style="background-color: rgba(150, 100, 100, 1.0); padding: 20px; grid-column-start: 2">logic.cpp</div>
+							<div data-id="file2" class="grid-item" style="background-color: rgba(150, 100, 100, 1.0); padding: 20px">math.cpp</div>
+						</div>
+						<p>main.cpp ser bara funktioner som</p>
+						<p>exponeras i api.hpp</p>
+					</section>
+					<section data-auto-animate>
+						<div class="grid-container" style="display: inline-grid; grid-template-columns: auto auto auto; padding: 10px; grid-gap: 10px">
+							<div data-id="file0" class="grid-item" style="background-color: rgba(150, 100, 150, 1.0); padding: 20px">main.o</div>
+							<div data-id="file1" class="grid-item" style="background-color: rgba(150, 100, 150, 1.0); padding: 20px">logic.o</div>
+							<div data-id="file2" class="grid-item" style="background-color: rgba(150, 100, 150, 1.0); padding: 20px">math.o</div>
+						</div>
+						<p>Vardera källfil kompileras till en objektfil</p>
+					</section>
+					<section data-auto-animate>
+						<div class="grid-container" style="display: inline-grid; grid-template-columns: auto auto auto; padding: 10px; grid-gap: -1px">
+							<div data-id="file0" class="grid-item" style="background-color: rgba(150, 100, 150, 1.0); padding: 20px"></div>
+							<div data-id="file1" class="grid-item" style="background-color: rgba(150, 100, 150, 1.0); padding: 20px">program.exe</div>
+							<div data-id="file2" class="grid-item" style="background-color: rgba(150, 100, 150, 1.0); padding: 20px"></div>
+						</div>
+						<p>Objektfiler länkas samman till en körbar fil</p>
+					</section>
+					<section data-auto-animate>
+						<div class="grid-container" style="display: inline-grid; grid-template-columns: auto auto auto; padding: 10px; grid-row-gap: 10px; grid-column-gap: -1px">
+							<div data-id="py-file0" class="grid-item" style="background-color: rgba(100, 100, 200, 1.0); padding: 20px"></div>
+							<div data-id="py-file1" class="grid-item" style="background-color: rgba(100, 100, 200, 1.0); padding: 20px">program.py</div>
+							<div data-id="py-file2" class="grid-item" style="background-color: rgba(100, 100, 200, 1.0); padding: 20px"></div>
+
+							<div data-id="file0" class="grid-item" style="background-color: rgba(150, 100, 150, 1.0); padding: 20px"></div>
+							<div data-id="file1" class="grid-item" style="background-color: rgba(150, 100, 150, 1.0); padding: 20px">program.exe</div>
+							<div data-id="file2" class="grid-item" style="background-color: rgba(150, 100, 150, 1.0); padding: 20px"></div>
+						</div>
+						<p data-id="sub-text">Samma program skrivet i två olika språk</p>
+					</section>
+					<section data-auto-animate>
+						<p data-id="sub-text">De exekveras olika</p>
+						<pre><code>python.exe program.py</code></pre>
+						<pre><code>program.exe</code></pre>
+					</section>
+
+					<section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
+						<textarea data-template>
+							## Hur kompilerar jag?
+
+							---
+
+							* Existerar många olika kompilatorer
+							* Alla har för och nackdelar
+								* Exempelvis effektiv kod, varningsflaggor
+							
+							Exempel för kompilatorn <b>clang</b>
+							```
+							clang++ main.cpp -o executable.exe
+							```
+
+							---
+
+							Kompilera med argument
+							```
+							clang++ (dina filer) -o (exekverbar fil) (flaggor)
+							```
+							```
+							clang++ main.cpp logic.cpp math.cpp -o program.exe -std=c++11 -g -Wall -Werror
+							```
+
+							---
+
+							Dessa kommandon blir ofta mycket att skriva
+							```
+							clang++ main.cpp logic.cpp math.cpp -o program.exe -std=c++11 -g -Wall -Werror
+							```
+							Specielt i stora projekt med flera hundra filer
+
+							---
+
+							## Makefile
+
+							* *Makefiler* innehåller instruktioner för att kompilera
+							* Syftet är att automatisera kompilering
+							* Sparar myyyycket tid :)
+
+						</textarea>
+					</section>
+				</section>
 
 
 
 				<section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
 					<textarea data-template>
 
-## Python -> C++
-### Variabler och Datatyper
+## Datatyper och Variabler
 
 --
 
-## Hej
+### Primitiva Datatyper
+
+| Typ		| Betydelse							| Exempel		|
+|-----------|-----------------------------------|---------------|
+|bool		| boolean							| true false	|
+|char		| character							| 'a' 'B' '\n'	|
+|int		| integer							| 1 -4 1338		|
+|float		| single-precision floating-point	| 3.14 -0.02 	|
+|double		| double-precision floating-point	| se float		|
+
+Finns fler.
+
+--
+
+### Varför Existerar Datatyper?
+* En variabel har en address i minnet
+* Kompilatorn behöver veta hur datan ska tolkas
+
+| I minne	| 01001010	|
+|-----------|-----------|
+| int		| 74		|
+| bool		| true		|
+| char		| 'J'		|
+
+--
+
+### Storlekar (i *bytes*) på Datatyper
+* Ingen *fast* storlek på primitiva datatyper i C++
+	* Brukar vara inom ett intervall
+	* Exakt storlek beror på kompilator/maskin
+
+Exempel på storlekar:
+```cpp
+sizeof(char) // 1
+sizeof(int) // 4
+sizeof(bool) // 4
+sizeof(float) // 4
+sizeof(double) // 8
+```
+
+--
+
+### Modifierare för Datatyper
+
+**signed, unsigned, short, long**
+
+* Ändrar storleken på en viss datatyp
+* Och därmed bredden på data som kan rymmas
+
+--
+
+### Modifierare för Datatyper
+
+**singed** och **unsigned** tillåter negativa respektive positiva heltal
+
+**short** minskar storleken på en datatyp
+
+**long** ökar storleken på en datatyp
+
+--
+
+### Modifierare för Datatyper
+
+| Datatyp			| Storlek				| Räckvidd							|
+|-------------------|-----------------------|-----------------------------------|
+| short int			| 2						| -32'768 till 32'767				|
+| unsigned short int| 2						| 0 till 65'535						|
+| unsigned int		| 4						| 0 till 4'294'967'295				|
+| int				| 4						| -2'147'483'648 till 2'147'483'647 |
+| long int			| 8						| -2'147'483'648 till 2'147'483'647	|
+| long long int		| 8						| -(2^63) till (2^63)-1				|
+
+Notera att *long int* inte garanterat rymmer mer än *int*!
+
+--
+
+## Variabler i C++
+
+TODO
+
+--
+
+## Variabler i C++
+* Måste **initieras** innan användning
+
+```cpp
+int mugs_at_home;
+int mugs_at_BTH = mugs_at_home * 100; // Undefined behavior
+```
+
+```cpp
+int mugs_at_home = 10;
+int mugs_at_BTH = mugs_at_home * 100; // OK!
+```
+
+--
+
+## Datatyper
+En datatyp bestämmer hur kompilatorn läser data
+
+```cpp
+int a = 74; // 74
+char b = 74; // 'J'
+bool c = 74; // true
+
+a = 'A'; // 65
+b = 'A'; // 'A'
+c = 'A'; // true
+```
+
+--
 
 					</textarea>
 				</section>
