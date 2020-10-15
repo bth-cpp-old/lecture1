@@ -15,7 +15,16 @@
 	</head>
 	<body>
 		<div class="reveal">
-			<div class="slides">
+			<div class="slides" style="tab-size: 3; -moz-tab-size: 3; -o-tab-size: 3;">
+
+				<section>
+					<h3>TESTING</h3>
+					<pre><code class="cpp" data-trim><script type="text/template">
+						#include <iostream>
+						std::cout <<> "Hej"
+					</script></code></pre>
+				</section>
+
 				<section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
 					<textarea data-template>
 ## Föreläsning 1
@@ -52,7 +61,7 @@
 ### Skriva robusta system
 
 <p class="fragment fade-up">
-Renderingsmotor - Ljudmotor - Databaser - Operativsystem
+Renderingsmotor - Ljudmotor - Databaser - Operativsystem - Webbläsare
 </p>
 
 					</textarea>
@@ -123,13 +132,12 @@ int main()
 					<section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
 						<textarea data-template>
 
-							## Python -> C++
-							### Generella skillnader	
+							### Grunder i C++
 
 							---
 
 							## Entrypoint
-							#### Där exekvering börjar <!-- .element: class="fragment" -->
+							#### Där exekvering börjar
 
 						
 						</textarea>
@@ -265,10 +273,7 @@ int main()
 						</code></pre>
 					</section>
 
-					<section data-auto-animate>
-						<h3>Kommentarer</h3>
-					</section>
-					<section data-auto-animate>
+					<section>
 						<h3>Kommentarer</h3>
 						<pre data-id="code-cpp"><code class="cpp" data-trim data-line-numbers>
 							// One line of comments
@@ -331,9 +336,6 @@ for nr in numbers:
 
 					<section data-auto-animate>
 						<h3>Programkod till maskinkod</h3>
-					</section>
-					<section data-auto-animate>
-						<h3>Programkod till maskinkod</h3>
 						<ul>
 							<li>Vi kan ej läsa maskinkod som en datorn</li>
 							<li>Skriv läsbar kod -> konvertera till maskinkod</li>
@@ -366,7 +368,6 @@ for nr in numbers:
 							<div data-id="file2" class="grid-item" style="background-color: rgba(100, 100, 200, 1.0); padding: 20px">math.py</div>
 						</div>
 						<p>Uppdelat i olika moduler</p>
-						<p>Dessa filer ser varandra</p>
 					</section>
 					<section data-auto-animate>
 						<div class="grid-container" style="display: inline-grid; grid-template-columns: auto auto auto; padding: 10px; grid-gap: 10px">
@@ -375,7 +376,6 @@ for nr in numbers:
 							<div data-id="file2" class="grid-item" style="background-color: rgba(150, 100, 100, 1.0); padding: 20px">math.cpp</div>
 						</div>
 						<p>Samma program kan skrivas i C++</p>
-						<p>Dessa filer ser inte varandra</p>
 					</section>
 					<section data-auto-animate>
 						<div class="grid-container" style="display: inline-grid; grid-template-columns: auto auto auto; padding: 10px; grid-gap: 10px">
@@ -442,8 +442,8 @@ for nr in numbers:
 							```
 							clang++ (dina filer) -o (exekverbar fil) (flaggor)
 							```
-							```
-							clang++ main.cpp logic.cpp math.cpp -o program.exe -std=c++11 -g -Wall -Werror
+							```cpp
+							clang++ main.cpp -o program.exe -std=c++11 -g -Wall -Werror
 							```
 
 							---
@@ -588,6 +588,182 @@ c = 'A'; // true
 --
 
 					</textarea>
+				</section>
+
+				<section>
+					<section>
+						<h3>Strängar</h3>
+					</section>
+
+					<section>
+						<h3>Strängar</h3>
+						<ul>
+							<li>Vi kommer gå djupare på std::string senare</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Namespace</h3>
+					</section>
+
+					<section>
+						<h3>Namespace</h3>
+						<ul>
+							<li>Förebygger namnkonflikter</li>
+							<li>Grupperar kod i under ett samlat namn</li>
+						</ul>
+						<pre><code class="cpp" data-trim data-line-numbers>
+							// Access the type "string" from the namespace "std"
+							std::string 
+						</code></pre>
+						<pre><code class="cpp" data-trim data-line-numbers><script type="text/template">
+							std::string // Access the type "string" from the namespace "std"
+						</script></code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Basic I/O</h3>
+					</section>
+
+					<section>
+						<h3>Basic I/O</h3>
+						<h4>Strängar</h4>
+						
+						<p>Python</p>
+						<pre><code class="python" data-trim>
+							name = input("Enter your name: ")	// Output + Input
+							print("Hello " + name + "!")			// Output
+						</code></pre>
+
+						<p>C++</p>
+						<pre><code class="cpp" data-trim>
+							std::string name;
+							std::cout << "Enter your name: ";		// Output
+							std::cin >> name;								// Input
+							std::cout << "Hello " << name << "!";	// Output
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Basic I/O</h3>
+						<h4>Siffror</h4>
+						
+						<p>Python</p>
+						<pre><code class="python" data-trim>
+							my_int = int(input("Input integer: "))
+						</code></pre>
+
+						<p>C++</p>
+						<pre><code class="cpp" data-trim>
+							int my_int;
+							std::cout << "Input integer: ";
+							std::cin >> my_int;
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Basic I/O</h3>
+						<h4>Exempel</h4>
+						
+						<pre><code class="cpp" data-trim data-line-numbers>
+							#include &lt;iostream&gt; // cout, cin, endl
+							int main()
+							{
+								int a, b;
+								std::cout << "Enter two numbers to add: " << std::endl
+								std::cin >> a >> b;
+								std::cout << "The sum is " << (a+b) << std::endl;
+								return 0;
+							}
+						</code></pre>
+						<p>Output:</p>
+						<pre><code class="cpp" data-trim>
+							Enter two numbers to add: 
+							15
+							27
+							The sum is 42
+						</code></pre>
+						<ul>
+							<li>cout - skriver ut i terminal</li>
+							<li>cin - hämtar inmatning från terminal</li>
+							<li>endl - skapar ny rad i terminal (likt '\n')</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Samlingar av Element</h3>
+						
+					</section>
+
+					<section>
+						<h3>Array</h3>
+						<ul>
+							<li>Samling av element av samma typ</li>
+							<li>Storlek måste vara känd vid kompilering</li>
+							<li>Storlek kan ej ändras!</li>
+							<li>Element nås med [ ]</li>
+							<li>Har inga egna funktioner</li>
+						</ul>
+						<pre><code class="cpp" data-trim>
+							int my_ints[3];			// Array of three integers
+							float my_floats[1500];	// Array of 1500 floats
+						</code></pre>
+					</section>
+					<section>
+						<h3>Array</h3>
+						<pre><code class="cpp" data-trim>
+							std::cin >> size;
+							char char_array[size]	// Won't compile
+						</code></pre>
+					</section>
+					<section>
+						<h3>Flerdimensionell Array</h3>
+						<ul>
+							<li>Egentligen bara arrayer i arrayer</li>
+						</ul>
+						<pre><code class="cpp" data-trim>
+						int matrix[4][4]
+						int three_dimensional_array[10][20][30];
+						</code></pre>
+					</section>
+					<section>
+						<h3>Flerdimensionell Array</h3>
+						<ul>
+							<li>Kan initieras när de deklareras</li>
+						</ul>
+						<pre><code class="cpp" data-trim>
+						int matrix[3][4] =	// Three elements, each an array of size 4
+						{
+							{0, 1, 2, 3},	// row index 0
+							{4, 5, 6, 7},	// row index 1
+							{8, 9, 10, 11}	// row index 2
+						}
+						</code></pre>
+
+						<pre><code class="cpp" data-trim>
+							int matrix[3][4] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
+						</code></pre>
+						
+						<p>Data lagras linjärt i minnet, båda exempel är ekvivalenta!</p>
+					</section>
+
+					<section>
+						<h3>Vector</h3>
+					</section>
+				</section>
+
+				<section>
+					<h3>Scope</h3>
+				</section>
+
+				<section>
+					<h3>Scope</h3>
 				</section>
 		  </div>
 	  </div>
