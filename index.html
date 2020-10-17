@@ -104,6 +104,35 @@ Renderingsmotor - Ljudmotor - Databaser - Operativsystem - Webbläsare
 						</textarea>
 					</section>
 
+					<section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
+						<textarea data-template>
+#### Övergripande skillnader
+
+| Antal element	| Python		| C++			| C++ (optimiserad)	|
+| ------------- | ------------- | ------------- | ----------------- |
+| 10k			| 0m 9.243s		| 0m 0.263s		| 0m 0.262s			|
+| 20k			| 0m 36.833s	| 0m 1.093s		| 0m 1.092s			|
+| 30k			| 1m 23.549s	| 0m 2.515s		| 0m 2.508s			|
+| 40k			| 2m 28.770s	| 0m 4.532s		| 0m 4.534s			|
+| 50k			| 3m 52.445s	| 0m 7.135s		| 0m 7.122s			|
+
+* Alla metoder sorterar samma lista
+* <em>clang++ -std=c++11</em>, optimizering med <em>-o3</em>
+
+---
+
+#### Skillnader under programmering
+
+| 						| Python         	| C++          		|
+| --------------------- | ----------------- | ----------------- |
+| **Variabler** 		| Dynamisk typning	| Statisk typning	|
+| **Kodblock**			| Indentering		| { }				|
+| **Uttryck**			| 					| ;					|
+| **Hantering minne** 	| Implicit (automatisk)	| Explicit (manuell) |
+| **Filtyper**			| .py				| .cpp, .hpp		|
+						</textarea>
+					</section>
+
 					<section data-auto-animate>
 						<pre><code data-line-numbers># Python
 print("Hello World!")
