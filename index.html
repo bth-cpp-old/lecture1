@@ -15,59 +15,78 @@
 	</head>
 	<body>
 		<div class="reveal">
-			<div class="slides" style="tab-size: 3; -moz-tab-size: 3; -o-tab-size: 3;">
+			<div class="slides">
 
 				<section>
-					<h3>TESTING</h3>
-					<pre><code class="cpp" data-trim><script type="text/template">
-						#include <iostream>
-						std::cout <<> "Hej"
-					</script></code></pre>
+					<h2>Föreläsning 1</h2>
+					<h3>Introduktion till C++</h3>
 				</section>
 
-				<section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
-					<textarea data-template>
-## Föreläsning 1
-#### Introduktion till C++
-
-
----
-
-
-## Agenda
-* Vad är C++
-* Kompilering
-* Gå från Python till C++
-
----
-
-### Vad är C++?
-
----
-
-### Varför ska du lära dig C++?
-
---
-
-### Arbetar närmare **hårdvaran**
-
-* Mer förståelse
-* <span class="fragment highlight-red">Mer kontroll</span>
-* <span class="fragment strike">Högre prestanda</span>
-<p class="fragment fade-up"><b>Mer att hålla koll på!</b></p>
-
---
-
-### Skriva robusta system
-
-<p class="fragment fade-up">
-Renderingsmotor - Ljudmotor - Databaser - Operativsystem - Webbläsare
-</p>
-
-					</textarea>
+				<section>
+					<h3>Agenda</h3>
+					<ol>
+						<li>Vad är C++</li>
+						<li>Varför är C++ bra att kunna?</li>
+						<li>Att gå från Python till C++</li>
+						<li>Grunder i C++</li>
+						<ul>
+							<li>Hur <em>byggs</em> ett program i C++?</li>
+							<li>Datatyper och Variabler</li>
+							<li>Samlingar av element</li>
+							<li>Basic I/O</li>
+						</ul>
+					</ol>
 				</section>
 
-				
+				<section>
+					<section data-auto-animate>
+						<h3>Vad är C++?</h3>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Vad är C++?</h3>
+						<ul>
+							<li>En påbyggnad av språket C</li>
+							<li>Högnivå - lågnivå</li>
+							<li><em>Cross-platform</em>; kan köras på alla maskiner!</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Varför är C++ bra att kunna?</h3>
+					</section>
+
+					<section data-auto-animate>
+						<h3>C++ Arbetar nära <b>hårdvaran</b></h3>
+						<ul>
+							<li>Mer kontroll</li>
+							<li>Högre prestanda</li>
+						</ul>
+					</section>
+					
+					<section data-auto-animate>
+						<h3>C++ Arbetar nära <b>hårdvaran</b></h3>
+						<ul>
+							<li>Mer kontroll</li>
+							<li>Högre prestanda</li>
+						</ul>
+						<p>Mer att hålla koll på!</p>
+					</section>
+
+					<section>
+						<h3>Kan skriva mer robusta system</h3>
+						<ul>
+							<li>Inbyggda system</li>
+							<li>Databaser</li>
+							<li>Operativsystem</li>
+							<li>Kompilatorer</li>
+							<li>Ljudmotorer</li>
+							<li>Renderingsmotorer</li>
+						</ul>
+					</section>
+				</section>
 
 
 
@@ -78,49 +97,117 @@ Renderingsmotor - Ljudmotor - Databaser - Operativsystem - Webbläsare
 						<h3>Att gå från Python till C++</h3>
 					</section>
 
-					<section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
+					<section data-markdown style="font-size:0.8em">
 						<textarea data-template>
-#### Övergripande skillnader
+### Övergripande skillnader
 
 |								| Python			| C++				|
 | ----------------------------- | ----------------- | ----------------- |
-| **Kodläsning**				| Interpreteras		| Kompileras		|
-| **Exekvering**				| Relativt långsamt	| Relativt snabbt	|
-| **Kod kontra funktionalitet** | Låg				| Hög				|
+| **Exekvering** | Interpreteras<br>*Relativt långsamt* | Kompileras<br>*Relativt snabbt* |
+| **Kod kontra<br>funktionalitet** | Låg				| Hög				|
 | **Kontroll**					| Låg				| Hög				|
 | **Bra för**					| Prototyper		| System			|
-
----
-
-#### Skillnader under programmering
-
-| 						| Python         	| C++          		|
-| --------------------- | ----------------- | ----------------- |
-| **Variabler** 		| Dynamisk typning	| Statisk typning	|
-| **Kodblock**			| Indentering		| { }				|
-| **Uttryck**			| 					| ;					|
-| **Hantering minne** 	| Implicit (automatisk)	| Explicit (manuell) |
-| **Filtyper**			| .py				| .cpp, .hpp		|
 						</textarea>
 					</section>
 
-					<section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
+					<section data-auto-animate>
+						<h3>Python vs. C++</h3>
+						<h4><em>Bubble sort</em></h4>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Python vs. C++</h3>
+						<h4><em>Bubble sort</em></h4>
+
+						<ol>
+							<li>Generera slumpmässig lista av storlek <em>n</em></li>
+							<li>Mät tid att sortera med Python</li>
+							<li>Mät tid att sortera med C++</li>
+						</ol>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Python vs. C++</h3>
+						<h4><em>Bubble sort</em></h4>
+
+						<table style="font-size: 0.8em;">
+							<tr data-id="result-table">
+								<th>Antal element</th>
+								<th>Python</th>
+								<th>C++</th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">10k</th>
+								<th style="font-weight: normal;">0m 9.243s</th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">20k</th>
+								<th style="font-weight: normal;">0m 36.833s</th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">30k</th>
+								<th style="font-weight: normal;">1m 23.549s</th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">40k</th>
+								<th style="font-weight: normal;">2m 28.770s</th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">50k</th>
+								<th style="font-weight: normal;">3m 52.445s</th>
+							</tr>
+						</table>
+						<ul style="font-size: 0.5em;">
+							<li>Alla metoder sorterar samma lista</li>
+							<li><em>clang++ -std=c++11</em></li>
+						</ul>
+					</section>
+					<section data-auto-animate>
+						<h3>Python vs. C++</h3>
+						<h4><em>Bubble sort</em></h4>
+
+						<table style="font-size: 0.8em;">
+							<tr data-id="result-table">
+								<th>Antal element</th>
+								<th>Python</th>
+								<th>C++</th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">10k</th>
+								<th style="font-weight: normal;">0m 9.243s</th>
+								<th style="font-weight: normal;">0m 0.263s</th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">20k</th>
+								<th style="font-weight: normal;">0m 36.833s</th>
+								<th style="font-weight: normal;">0m 1.093s</th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">30k</th>
+								<th style="font-weight: normal;">1m 23.549s</th>
+								<th style="font-weight: normal;">0m 2.515s</th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">40k</th>
+								<th style="font-weight: normal;">2m 28.770s</th>
+								<th style="font-weight: normal;">0m 4.532s</th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">50k</th>
+								<th style="font-weight: normal;">3m 52.445s</th>
+								<th style="font-weight: normal;">0m 7.135s</th>
+							</tr>
+						</table>
+						<ul style="font-size: 0.5em;">
+							<li>Alla metoder sorterar samma lista</li>
+							<li><em>clang++ -std=c++11</em></li>
+						</ul>
+					</section>
+
+
+
+					<section data-markdown style="font-size:0.8em">
 						<textarea data-template>
-#### Övergripande skillnader
-
-| Antal element	| Python		| C++			| C++ (optimiserad)	|
-| ------------- | ------------- | ------------- | ----------------- |
-| 10k			| 0m 9.243s		| 0m 0.263s		| 0m 0.262s			|
-| 20k			| 0m 36.833s	| 0m 1.093s		| 0m 1.092s			|
-| 30k			| 1m 23.549s	| 0m 2.515s		| 0m 2.508s			|
-| 40k			| 2m 28.770s	| 0m 4.532s		| 0m 4.534s			|
-| 50k			| 3m 52.445s	| 0m 7.135s		| 0m 7.122s			|
-
-* Alla metoder sorterar samma lista
-* <em>clang++ -std=c++11</em>, optimizering med <em>-o3</em>
-
----
-
 #### Skillnader under programmering
 
 | 						| Python         	| C++          		|
@@ -158,18 +245,18 @@ int main()
 				</section>
 
 				<section>
-					<section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
-						<textarea data-template>
 
-							### Grunder i C++
+					<section>
+						<h3>Grunder i C++</h3>
+					</section>
 
-							---
+					<section data-auto-animate>
+						<h3>Entrypoint</h3>
+					</section>
 
-							## Entrypoint
-							#### Där exekvering börjar
-
-						
-						</textarea>
+					<section data-auto-animate>
+						<h3>Entrypoint</h3>
+						<h4>Där exekvering börjar </h4>
 					</section>
 
 					<section data-auto-animate>
@@ -302,7 +389,10 @@ int main()
 						</code></pre>
 					</section>
 
-					<section>
+					<section data-auto-animate>
+						<h3>Kommentarer</h3>
+					</section>
+					<section data-auto-animate>
 						<h3>Kommentarer</h3>
 						<pre data-id="code-cpp"><code class="cpp" data-trim data-line-numbers>
 							// One line of comments
@@ -365,6 +455,9 @@ for nr in numbers:
 
 					<section data-auto-animate>
 						<h3>Programkod till maskinkod</h3>
+					</section>
+					<section data-auto-animate>
+						<h3>Programkod till maskinkod</h3>
 						<ul>
 							<li>Vi kan ej läsa maskinkod som en datorn</li>
 							<li>Skriv läsbar kod -> konvertera till maskinkod</li>
@@ -397,6 +490,7 @@ for nr in numbers:
 							<div data-id="file2" class="grid-item" style="background-color: rgba(100, 100, 200, 1.0); padding: 20px">math.py</div>
 						</div>
 						<p>Uppdelat i olika moduler</p>
+						<p>Dessa filer ser varandra</p>
 					</section>
 					<section data-auto-animate>
 						<div class="grid-container" style="display: inline-grid; grid-template-columns: auto auto auto; padding: 10px; grid-gap: 10px">
@@ -405,6 +499,7 @@ for nr in numbers:
 							<div data-id="file2" class="grid-item" style="background-color: rgba(150, 100, 100, 1.0); padding: 20px">math.cpp</div>
 						</div>
 						<p>Samma program kan skrivas i C++</p>
+						<p>Dessa filer ser inte varandra</p>
 					</section>
 					<section data-auto-animate>
 						<div class="grid-container" style="display: inline-grid; grid-template-columns: auto auto auto; padding: 10px; grid-gap: 10px">
@@ -447,7 +542,167 @@ for nr in numbers:
 					<section data-auto-animate>
 						<p data-id="sub-text">De exekveras olika</p>
 						<pre><code>python.exe program.py</code></pre>
-						<pre><code>program.exe</code></pre>
+						<pre data-id="exec-win"><code>program.exe</code></pre>
+					</section>
+					<section data-auto-animate>
+						<p>Exekvering i Windows-terminal:</p>
+						<pre data-id="exec-win"><code>program.exe</code></pre>
+						<p>Exekvering i Linux-terminal:</p>
+						<pre data-id="exec-ubuntu"><code>./program</code></pre>
+					</section>
+					<section data-auto-animate>
+						<p>Exekvering i Windows-terminal:</p>
+						<pre data-id="exec-win"><code>PS C:\applications> program.exe</code></pre>
+						<p>Exekvering i Linux-terminal:</p>
+						<pre data-id="exec-ubuntu"><code>user@BTH:/home/applications$ ./program</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Hur kompilerar jag?</h3>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Hur kompilerar jag?</h3>
+						<ul>
+							<li>Existerar många olika kompilatorer</li>
+							<li>Alla har för- och nackdelar</li>
+							<ul>
+								<li>Ex. effektiv kod, varningstexter</li>
+							</ul>
+						</ul>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Hur kompilerar jag?</h3>
+						<p>Vi kommer använda kompilatorn <b>clang</b></p>
+
+						<pre data-id="compile"><code data-trim>
+							clang++ main.cpp -o executable.out
+						</code></pre>
+
+						<p>Exekvering:</p>
+						<pre data-id="exec"><code data-trim>
+							./executable.out
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Kompilera större program</h3>
+
+						<p>Kompilering:</p>
+						<pre data-id="compile"><code data-trim>
+							clang++ main.cpp math.cpp logic.cpp -o program
+						</code></pre>
+
+						<p>Exekvering:</p>
+						<pre data-id="exec"><code data-trim>
+							./program
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Kompilera större program</h3>
+
+						<p>Kompilering:</p>
+						<pre><code data-trim>
+							clang++ main.cpp -o main.o
+							clang++ math.cpp -o math.o
+							clang++ logic.cpp -o logic.o
+						</code></pre>
+
+						<pre data-id="compile"><code data-trim>
+							clang++ main.o math.o logic.o -o program
+						</code></pre>
+
+						<p>Exekvering:</p>
+						<pre data-id="exec"><code data-trim>
+							./program
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Kompilera större program</h3>
+
+						<p>Varför allt detta</p>
+						<pre><code data-trim>
+							clang++ main.cpp -o main.o
+							clang++ math.cpp -o math.o
+							clang++ logic.cpp -o logic.o
+						</code></pre>
+						<pre data-id="compile"><code data-trim>
+							clang++ main.o math.o logic.o -o program
+						</code></pre>
+
+						<p>Och inte bara detta?</p>
+						<pre><code data-trim>
+							clang++ main.cpp math.cpp logic.cpp -o program
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Kompilera större program</h3>
+
+						<ul style="font-size: 0.8em">
+							<li>Låt <em>logic.cpp</em> modifieras</li>
+							<li>Vad händer med kompilering?</li>
+						</ul>
+
+						<p>Varför allt detta</p>
+						<pre><code data-trim>
+							clang++ main.cpp -o main.o
+							clang++ math.cpp -o math.o
+							clang++ logic.cpp -o logic.o
+						</code></pre>
+						<pre data-id="compile"><code data-trim>
+							clang++ main.o math.o logic.o -o program
+						</code></pre>
+
+						<p>Och inte bara detta?</p>
+						<pre><code data-trim>
+							clang++ main.cpp math.cpp logic.cpp -o program
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Kompilera större program</h3>
+
+						<ul style="font-size: 0.8em">
+							<li>Låt <em>logic.cpp</em> modifieras</li>
+							<li>Vad händer med kompilering?</li>
+						</ul>
+
+						<p>Kompilerar <b>endast</b> modifierad fil</p>
+						<pre><code data-trim>
+							clang++ logic.cpp -o logic.o
+						</code></pre>
+						<pre data-id="compile"><code data-trim>
+							clang++ main.o math.o logic.o -o program
+						</code></pre>
+
+						<p>Kompilerar <b>alla</b> filer</p>
+						<pre><code data-trim>
+							clang++ main.cpp math.cpp logic.cpp -o program
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Kompilera med flaggor</h3>
+						<h4>Inställningar för kompilering</h4>
+
+						<table>
+							<tr>
+								<th>Flagga</th>
+								<th>Funktion</th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">-o</th>
+								<th style="font-weight: normal;">output file</th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">-</th>
+								<th style="font-weight: normal;">output file</th>
+							</tr>
+						</table>
 					</section>
 
 					<section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
@@ -462,7 +717,7 @@ for nr in numbers:
 							
 							Exempel för kompilatorn <b>clang</b>
 							```
-							clang++ main.cpp -o executable.exe
+							clang++ main.cpp -o executable.out
 							```
 
 							---
@@ -471,8 +726,8 @@ for nr in numbers:
 							```
 							clang++ (dina filer) -o (exekverbar fil) (flaggor)
 							```
-							```cpp
-							clang++ main.cpp -o program.exe -std=c++11 -g -Wall -Werror
+							```
+							clang++ main.cpp logic.cpp math.cpp -o program.exe -std=c++11 -g -Wall -Werror
 							```
 
 							---
@@ -492,6 +747,110 @@ for nr in numbers:
 							* Sparar myyyycket tid :)
 
 						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-auto-animate>
+						<h3>Filformat</h3>
+						<h4>Kodfiler - C++</h4>
+
+						<table data-id="files">
+							<tr>
+								<th>Filnamn</th>
+								<th>Filtyp</th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">file.cpp</th>
+								<th style="font-weight: normal;"><em>source file</em></th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">file.hpp</th>
+								<th style="font-weight: normal;"><em>header file</em></th>
+							</tr>
+						</table>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Filformat</h3>
+						<h4>Kodfiler - C-style</h4>
+
+						<table data-id="files">
+							<tr>
+								<th>Filnamn</th>
+								<th>Filtyp</th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">file.c</th>
+								<th style="font-weight: normal;"><em>source file</em></th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">file.h</th>
+								<th style="font-weight: normal;"><em>header file</em></th>
+							</tr>
+						</table>
+						<ul>
+							<li>Du kommer stöta på dessa</li>
+							<li>C++ är en utbyggnad av C</li>
+						</ul>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Filformat</h3>
+						<h4>Körbara filer</h4>
+
+						<table data-id="files">
+							<tr>
+								<th>Filnamn</th>
+								<th>Platform</th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">file.exe</th>
+								<th style="font-weight: normal;">Windows</th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">file.out<br>file</th>
+								<th style="font-weight: normal;"><br>Linux</th>
+							</tr>
+						</table>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Filformat</h3>
+						<h4>I denna kurs</h4>
+
+						<table data-id="files">
+							<tr>
+								<th>Filnamn</th>
+								<th>Förklaring</th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">
+									<em>makefile</em><br>
+								</th>
+								<th style="font-weight: normal;">Kompilering</th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">
+									<em>source.cpp</em><br>
+									<em>header.hpp</em>
+								</th>
+								<th style="font-weight: normal;">Kodfil</th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">
+									<em>object.o</em><br>
+								</th>
+								<th style="font-weight: normal;">Objektfil</th>
+							</tr>
+							<tr>
+								<th style="font-weight: normal;">
+									<em>file.out</em><br>
+									<em>file</em>
+								</th>
+								<th style="font-weight: normal;">Körbar fil</th>
+							</tr>
+						</table>
 					</section>
 				</section>
 
@@ -581,8 +940,17 @@ Notera att *long int* inte garanterat rymmer mer än *int*!
 --
 
 ## Variabler i C++
+* Ett namngivet minnesutrymme
+* Måste *deklareras* innan användning
+* Kan endast vara en *datatyp*
 
-TODO
+```cpp
+int first_int = 0;
+int second_int, third_int;
+float first_float = 0.4f;
+
+
+```
 
 --
 
@@ -617,182 +985,6 @@ c = 'A'; // true
 --
 
 					</textarea>
-				</section>
-
-				<section>
-					<section>
-						<h3>Strängar</h3>
-					</section>
-
-					<section>
-						<h3>Strängar</h3>
-						<ul>
-							<li>Vi kommer gå djupare på std::string senare</li>
-						</ul>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h3>Namespace</h3>
-					</section>
-
-					<section>
-						<h3>Namespace</h3>
-						<ul>
-							<li>Förebygger namnkonflikter</li>
-							<li>Grupperar kod i under ett samlat namn</li>
-						</ul>
-						<pre><code class="cpp" data-trim data-line-numbers>
-							// Access the type "string" from the namespace "std"
-							std::string 
-						</code></pre>
-						<pre><code class="cpp" data-trim data-line-numbers><script type="text/template">
-							std::string // Access the type "string" from the namespace "std"
-						</script></code></pre>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h3>Basic I/O</h3>
-					</section>
-
-					<section>
-						<h3>Basic I/O</h3>
-						<h4>Strängar</h4>
-						
-						<p>Python</p>
-						<pre><code class="python" data-trim>
-							name = input("Enter your name: ")	// Output + Input
-							print("Hello " + name + "!")			// Output
-						</code></pre>
-
-						<p>C++</p>
-						<pre><code class="cpp" data-trim>
-							std::string name;
-							std::cout << "Enter your name: ";		// Output
-							std::cin >> name;								// Input
-							std::cout << "Hello " << name << "!";	// Output
-						</code></pre>
-					</section>
-
-					<section>
-						<h3>Basic I/O</h3>
-						<h4>Siffror</h4>
-						
-						<p>Python</p>
-						<pre><code class="python" data-trim>
-							my_int = int(input("Input integer: "))
-						</code></pre>
-
-						<p>C++</p>
-						<pre><code class="cpp" data-trim>
-							int my_int;
-							std::cout << "Input integer: ";
-							std::cin >> my_int;
-						</code></pre>
-					</section>
-
-					<section>
-						<h3>Basic I/O</h3>
-						<h4>Exempel</h4>
-						
-						<pre><code class="cpp" data-trim data-line-numbers>
-							#include &lt;iostream&gt; // cout, cin, endl
-							int main()
-							{
-								int a, b;
-								std::cout << "Enter two numbers to add: " << std::endl
-								std::cin >> a >> b;
-								std::cout << "The sum is " << (a+b) << std::endl;
-								return 0;
-							}
-						</code></pre>
-						<p>Output:</p>
-						<pre><code class="cpp" data-trim>
-							Enter two numbers to add: 
-							15
-							27
-							The sum is 42
-						</code></pre>
-						<ul>
-							<li>cout - skriver ut i terminal</li>
-							<li>cin - hämtar inmatning från terminal</li>
-							<li>endl - skapar ny rad i terminal (likt '\n')</li>
-						</ul>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h3>Samlingar av Element</h3>
-						
-					</section>
-
-					<section>
-						<h3>Array</h3>
-						<ul>
-							<li>Samling av element av samma typ</li>
-							<li>Storlek måste vara känd vid kompilering</li>
-							<li>Storlek kan ej ändras!</li>
-							<li>Element nås med [ ]</li>
-							<li>Har inga egna funktioner</li>
-						</ul>
-						<pre><code class="cpp" data-trim>
-							int my_ints[3];			// Array of three integers
-							float my_floats[1500];	// Array of 1500 floats
-						</code></pre>
-					</section>
-					<section>
-						<h3>Array</h3>
-						<pre><code class="cpp" data-trim>
-							std::cin >> size;
-							char char_array[size]	// Won't compile
-						</code></pre>
-					</section>
-					<section>
-						<h3>Flerdimensionell Array</h3>
-						<ul>
-							<li>Egentligen bara arrayer i arrayer</li>
-						</ul>
-						<pre><code class="cpp" data-trim>
-						int matrix[4][4]
-						int three_dimensional_array[10][20][30];
-						</code></pre>
-					</section>
-					<section>
-						<h3>Flerdimensionell Array</h3>
-						<ul>
-							<li>Kan initieras när de deklareras</li>
-						</ul>
-						<pre><code class="cpp" data-trim>
-						int matrix[3][4] =	// Three elements, each an array of size 4
-						{
-							{0, 1, 2, 3},	// row index 0
-							{4, 5, 6, 7},	// row index 1
-							{8, 9, 10, 11}	// row index 2
-						}
-						</code></pre>
-
-						<pre><code class="cpp" data-trim>
-							int matrix[3][4] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
-						</code></pre>
-						
-						<p>Data lagras linjärt i minnet, båda exempel är ekvivalenta!</p>
-					</section>
-
-					<section>
-						<h3>Vector</h3>
-					</section>
-				</section>
-
-				<section>
-					<h3>Scope</h3>
-				</section>
-
-				<section>
-					<h3>Scope</h3>
 				</section>
 		  </div>
 	  </div>
