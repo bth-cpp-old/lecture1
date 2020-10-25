@@ -4,11 +4,24 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Classes and Objects pt1</title>
+		<title>Introduktion till C++</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
 		<link rel="stylesheet" href="dist/theme/serif.css" id="theme">
+
+		<style>
+			table.memory td {
+				font-size: 0.6em;
+				border: 2px solid #f7f3de;
+				border-collapse: collapse;
+				background-color: #404040;
+				color: white;
+			}
+			table.memory td:nth-of-type(8n) {
+				border-right: 8px solid #f7f3de;
+			}
+		</style>
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
@@ -695,68 +708,114 @@ for nr in numbers:
 								<th>Funktion</th>
 							</tr>
 							<tr>
-								<th style="font-weight: normal;">-o</th>
-								<th style="font-weight: normal;">output file</th>
+								<td>-o <em>file</em></td>
+								<td>output file</td>
 							</tr>
 							<tr>
-								<th style="font-weight: normal;">-</th>
-								<th style="font-weight: normal;">output file</th>
+								<td>-Wall</td>
+								<td>Enable warnings</td>
+							</tr>
+							<tr>
+								<td>-Werror</td>
+								<td>Treat warnings as errors</td>
+							</tr>
+							<tr>
+								<td>-std=c++11</td>
+								<td>c++11 standard</td>
+							</tr>
+							<tr>
+								<td>-O3</td>
+								<td>Enable optimization</td>
 							</tr>
 						</table>
+						<p style="font-size: 0.6em;">Obs! Detta gäller clang. Flaggor kan variera per kompilator.</p>
 					</section>
 
-					<section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
-						<textarea data-template>
-							## Hur kompilerar jag?
+					<section>
+						<h3>Kompilera med flaggor</h3>
+						<h4>Inställningar för kompilering</h4>
 
-							---
+						<pre><code class="cpp" data-trim data-line-numbers>
+							// main.cpp
+							#include &lt;iostream&gt;
 
-							* Existerar många olika kompilatorer
-							* Alla har för och nackdelar
-								* Exempelvis effektiv kod, varningsflaggor
+							int main()
+							{
+							    int foo, bar;
+							    foo = bar;
+							    std::cout << "foo: " << foo << std::endl;
+							    return 0;
+							}
+						</code></pre>
+						<pre><code class="cpp" data-trim>
+							clang++ -Wall main.cpp -o out
+						</code></pre>
+
+						<pre style="font-size: 0.4em;"><code class="ubuntu" data-trim>
+							main.cpp:6:8: warning: variable 'bar' is uninitialized when used here [-Wuninitialized]
+							    foo = bar;
+							          ^~~
+							main.cpp:5:14: note: initialize the variable 'bar' to silence this warning
+							int foo, bar;
+							            ^
+							             = 0
+							1 warning generated.
+						</code></pre>
+					</section>
+
+					<section>
+						<ul>
+							<li>Kompileringskommandon spårar lätt ut</li>
+							<li>Speciellt i projekt med flera hundra filer</li>
+						</ul>
+
+						<pre><code class="ubuntu" data-trim>
+							clang++ main.cpp logic.cpp math.cpp -o program.exe -std=c++11 -g -Wall -Werror
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>makefile</h3>
+
+						<ul>
+							<li>Innehåller instruktioner för att kompilera</li>
+							<li>Syftet är att automatisera kompilering</li>
+							<li>Sparar myyyycket tid :)</li>
+						</ul>
+
+						<p><em>makefile</em>:</p>
+						<pre style="font-size: 0.4em;"><code class="makefile" data-trim data-line-numbers>
+							CXX := clang++
+							CXXFLAGS := -Werror -Wall -std=c++11
+							EXECUTABLE := out
+
+							all: $(BUILD)main.o
+								$(CXX) $(CXXFLAGS) $(BUILD)main.o $(EXECUTABLE)
 							
-							Exempel för kompilatorn <b>clang</b>
-							```
-							clang++ main.cpp -o executable.out
-							```
+							$(BUILD)main.o: $(SRC)main.cpp
+								@echo "Building main.cpp"
+								$(CXX) $(CXXFLAGS) -c $(SRC)main.cpp -I$(INCLUDE) -o $(BUILD)main.o
+						</code></pre>
 
-							---
-
-							Kompilera med argument
-							```
-							clang++ (dina filer) -o (exekverbar fil) (flaggor)
-							```
-							```
-							clang++ main.cpp logic.cpp math.cpp -o program.exe -std=c++11 -g -Wall -Werror
-							```
-
-							---
-
-							Dessa kommandon blir ofta mycket att skriva
-							```
-							clang++ main.cpp logic.cpp math.cpp -o program.exe -std=c++11 -g -Wall -Werror
-							```
-							Specielt i stora projekt med flera hundra filer
-
-							---
-
-							## Makefile
-
-							* *Makefiler* innehåller instruktioner för att kompilera
-							* Syftet är att automatisera kompilering
-							* Sparar myyyycket tid :)
-
-						</textarea>
+						<p>Kompilera med kommandot:</p>
+						<pre><code class="ubuntu" data-trim>
+							make
+						</code></pre>
 					</section>
 				</section>
 
 				<section>
+
+					<section data-auto-animate>
+						<h3>Filformat</h3>
+					</section>
+
 					<section data-auto-animate>
 						<h3>Filformat</h3>
 						<h4>Kodfiler - C++</h4>
 
-						<table data-id="files">
-							<tr>
+						<table>
+							<tr data-id="files">
 								<th>Filnamn</th>
 								<th>Filtyp</th>
 							</tr>
@@ -771,12 +830,12 @@ for nr in numbers:
 						</table>
 					</section>
 
-					<section data-auto-animate>
+					<section>
 						<h3>Filformat</h3>
 						<h4>Kodfiler - C-style</h4>
 
-						<table data-id="files">
-							<tr>
+						<table>
+							<tr data-id="files">
 								<th>Filnamn</th>
 								<th>Filtyp</th>
 							</tr>
@@ -795,11 +854,11 @@ for nr in numbers:
 						</ul>
 					</section>
 
-					<section data-auto-animate>
+					<section>
 						<h3>Filformat</h3>
 						<h4>Körbara filer</h4>
 
-						<table data-id="files">
+						<table>
 							<tr>
 								<th>Filnamn</th>
 								<th>Platform</th>
@@ -815,11 +874,11 @@ for nr in numbers:
 						</table>
 					</section>
 
-					<section data-auto-animate>
+					<section>
 						<h3>Filformat</h3>
 						<h4>I denna kurs</h4>
 
-						<table data-id="files">
+						<table>
 							<tr>
 								<th>Filnamn</th>
 								<th>Förklaring</th>
@@ -854,137 +913,384 @@ for nr in numbers:
 					</section>
 				</section>
 
+				<section>
+					<section>
+						<h3>Datatyper och variabler</h3>
+					</section>
 
+					<section data-auto-animate>
+						<h3>Primitiva datatyper</h3>
+						<table>
+							<tr>
+								<th data-id="datatype">Typ</th>
+								<th>Betydelse</th>
+							</tr>
+							<tr>
+								<td data-id="datatype"><em>bool</em></td>
+								<td>boolean</td>
+							</tr>
+							<tr>
+								<td data-id="datatype"><em>char</em></td>
+								<td>character</td>
+							</tr>
+							<tr>
+								<td data-id="datatype"><em>int</em></td>
+								<td>integer</td>
+							</tr>
+							<tr>
+								<td data-id="datatype"><em>float</em></td>
+								<td>single-precision floating-point</td>
+							</tr>
+							<tr>
+								<td data-id="datatype"><em>double</em></td>
+								<td>double-precision floating-point</td>
+							</tr>
+						</table>
+						<p>Finns fler.</p>
+					</section>
 
-				<section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
-					<textarea data-template>
+					<section data-auto-animate>
+						<h3>Primitiva datatyper</h3>
+						<table>
+							<tr>
+								<th data-id="datatype">Typ</th>
+								<th>Exempel</th>
+							</tr>
+							<tr>
+								<td data-id="datatype"><em>bool</em></td>
+								<td>true false</td>
+							</tr>
+							<tr>
+								<td data-id="datatype"><em>char</em></td>
+								<td>'a' 'B' '\n'</td>
+							</tr>
+							<tr>
+								<td data-id="datatype"><em>int</em></td>
+								<td>1 -4 1338</td>
+							</tr>
+							<tr>
+								<td data-id="datatype"><em>float</em></td>
+								<td>3.14f -0.02f</td>
+							</tr>
+							<tr>
+								<td data-id="datatype"><em>double</em></td>
+								<td>3.14 -0.02</td>
+							</tr>
+						</table>
+						<p>Finns fler.</p>
+					</section>
 
-## Datatyper och Variabler
+					<section>
+						<h3>Vad är en datatyp?</h3>
+						<h4>Bestämmer <b>hur</b> data i minnet ska läsas</h4>
 
---
+						<table class="memory">
+							<tr>
+								<td>0</td>
+								<td>1</td>
+								<td>0</td>
+								<td>0</td>
+								<td>1</td>
+								<td>0</td>
+								<td>1</td>
+								<td>0</td>
+							</tr>
+						</table>
 
-### Primitiva Datatyper
+						<table>
+							<tr>
+								<th>Datatyp</th>
+								<th>Värde</th>
+							</tr>
+							<tr>
+								<td><em>int</em></td>
+								<td>74</td>
+							</tr>
+							<tr>
+								<td><em>bool</em></td>
+								<td><em>true</em></td>
+							</tr>
+							<tr>
+								<td><em>char</em></td>
+								<td>'J'</td>
+							</tr>
+						</table>
+					</section>
 
-| Typ		| Betydelse							| Exempel		|
-|-----------|-----------------------------------|---------------|
-|bool		| boolean							| true false	|
-|char		| character							| 'a' 'B' '\n'	|
-|int		| integer							| 1 -4 1338		|
-|float		| single-precision floating-point	| 3.14 -0.02 	|
-|double		| double-precision floating-point	| se float		|
+					<section>
+						<h3>Storlek (i <em>bytes</em>)</h3>
+						<h4>För primitiva datatyper</h4>
+						<ul>
+							<li>Finns ingen <em>fast</em> storlek per datatyp</li>
+							<li>Kan variera från maskin till maskin</li>
+							<li><em>Oftast</em> densamma, men ta det ej för givet</li>
+						</ul>
+						<pre><code class="cpp" data-trim>
+							// Example from my computer:
+							sizeof(char)	// 1 byte
+							sizeof(bool)	// 1 bytes
+							sizeof(int)	// 4 bytes
+							sizeof(float)	// 4 bytes
+							sizeof(double)	// 8 bytes
+						</code></pre>
 
-Finns fler.
+						<div style="display: inline-block">
+							<p>char</p>
+							<table class="memory">
+								<tr>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+								</tr>
+							</table>
 
---
+							<p>int</p>
+							<table class="memory" style="font-size: 0.3em;">
+								<tr>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
 
-### Varför Existerar Datatyper?
-* En variabel har en address i minnet
-* Kompilatorn behöver veta hur datan ska tolkas
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
 
-| I minne	| 01001010	|
-|-----------|-----------|
-| int		| 74		|
-| bool		| true		|
-| char		| 'J'		|
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
 
---
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+								</tr>
+							</table>
+						</div>
+						<div style="display: inline-block">
+							<p>bool</p>
+							<table class="memory">
+								<tr>
+									<td>1</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>0</td>
+								</tr>
+							</table>
 
-### Storlekar (i *bytes*) på Datatyper
-* Ingen *fast* storlek på primitiva datatyper i C++
-	* Brukar vara inom ett intervall
-	* Exakt storlek beror på kompilator/maskin
+							<p>double</p>
+							<table class="memory" style="font-size: 0.3em;">
+								<tr>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
 
-Exempel på storlekar:
-```cpp
-sizeof(char) // 1
-sizeof(int) // 4
-sizeof(bool) // 4
-sizeof(float) // 4
-sizeof(double) // 8
-```
+									<td>1</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>1</td>
 
---
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
 
-### Modifierare för Datatyper
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+								</tr>
+							</table>
+							<table class="memory" style="font-size: 0.3em;">
+								<tr>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
 
-**signed, unsigned, short, long**
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>1</td>
+									<td>0</td>
 
-* Ändrar storleken på en viss datatyp
-* Och därmed bredden på data som kan rymmas
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
 
---
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+								</tr>
+							</table>
+						</div>
+					</section>
 
-### Modifierare för Datatyper
+					<section data-auto-animate>
+						<h3>Modifierare</h3>
+						<h4>För primitiva datatyper</h4>
+						<ul>
+							<li><b>signed</b> tillåter positiva heltal</li>
+							<li><b>unsigned</b> tillåter negativa heltal</li>
+							<li><b>short</b> minskar storlek på datatyp</li>
+							<li><b>long</b> ökar storlek på datatyp</li>
+						</ul>
+					</section>
 
-**singed** och **unsigned** tillåter negativa respektive positiva heltal
+					<section data-auto-animate>
+						<h3>Modifierare</h3>
+						<h4>För primitiva datatyper</h4>
+						<p><b data-id="singed">signed</b>, <b>unsigned, short, long</b></p>
+						<pre><code class="cpp" data-trim>
+							// Example from my computer
+							short int	// 2 bytes,	-32'768 to 32'767
+							unsigned short int // 2 bytes,	0 to 65'535
+							unsigned int	// 4 bytes,	0 to 4'294'967'295
+							int		// 4 bytes,	-2'147'483'648 to 2'147'483'647
+							long int	// 8 bytes,	-(2^63) till (2^63)-1
+						</code></pre>
+					</section>
 
-**short** minskar storleken på en datatyp
+					<section data-auto-animate>
+						<h3>Variabler</h3>
+						<ul>
+							<li>Ett namngivet minnesutrymme</li>
+							<li><em>Deklareras</em> innan användning</li>
+							<li>Har en fast datatyp som inte kan ändras</li>
+						</ul>
+					</section>
 
-**long** ökar storleken på en datatyp
+					<section data-auto-animate>
+						<h3>Variabler</h3>
 
---
+						<ul>
+							<li><b>Deklarering</b></li>
+							<ul style="font-size: 0.8em;">
+								<li>Det existerar en variabel med namnet ...</li>
+								<li>Kan definieras flera gånger</li>
+								<li>Inget minne allokeras</li>
+							</ul>
 
-### Modifierare för Datatyper
+							<li><b>Definiering</b></li>
+							<ul style="font-size: 0.8em;">
+								<li>Variabeln får värdet ...</li>
+								<li>Kan <b>endast</b> göras en gång</li>
+								<li>Minne allokeras för variabeln</li>
+							</ul>
+						</ul>
 
-| Datatyp			| Storlek				| Räckvidd							|
-|-------------------|-----------------------|-----------------------------------|
-| short int			| 2						| -32'768 till 32'767				|
-| unsigned short int| 2						| 0 till 65'535						|
-| unsigned int		| 4						| 0 till 4'294'967'295				|
-| int				| 4						| -2'147'483'648 till 2'147'483'647 |
-| long int			| 8						| -2'147'483'648 till 2'147'483'647	|
-| long long int		| 8						| -(2^63) till (2^63)-1				|
+						<pre><code class="cpp" data-trim data-line-numbers>
+							int foo, bar; // Declaration of foo and bar
+							foo = 5; // Definition of foo
+							
+							foo = bar; // Undefined behavior! bar not defined
+						</code></pre>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h3>Samlingar av element</h3>
+					</section>
 
-Notera att *long int* inte garanterat rymmer mer än *int*!
+					<section>
+						<h3>Array</h3>
+					</section>
 
---
+					<section>
+						<h3>Dynamisk Array</h3>
+					</section>
 
-## Variabler i C++
-* Ett namngivet minnesutrymme
-* Måste *deklareras* innan användning
-* Kan endast vara en *datatyp*
+					<section>
+						<h3>std::vector</h3>
+					</section>
 
-```cpp
-int first_int = 0;
-int second_int, third_int;
-float first_float = 0.4f;
+					<section>
+						<h3>std::map</h3>
+					</section>
+				</section>
 
+				<section>
+					<section>
+						<h3>Basic I/O</h3>
+					</section>
 
-```
+					<section>
+						<h3>Utmatning i terminal</h3>
+					</section>
 
---
+					<section>
+						<h3>Inmatning från terminal</h3>
+					</section>
 
-## Variabler i C++
-* Måste **initieras** innan användning
+					<section>
+						<h3>Skriva till fil</h3>
+					</section>
 
-```cpp
-int mugs_at_home;
-int mugs_at_BTH = mugs_at_home * 100; // Undefined behavior
-```
-
-```cpp
-int mugs_at_home = 10;
-int mugs_at_BTH = mugs_at_home * 100; // OK!
-```
-
---
-
-## Datatyper
-En datatyp bestämmer hur kompilatorn läser data
-
-```cpp
-int a = 74; // 74
-char b = 74; // 'J'
-bool c = 74; // true
-
-a = 'A'; // 65
-b = 'A'; // 'A'
-c = 'A'; // true
-```
-
---
-
-					</textarea>
+					<section>
+						<h3>Läsa från fil</h3>
+					</section>
 				</section>
 		  </div>
 	  </div>
