@@ -774,7 +774,7 @@ for nr in numbers:
 						</code></pre>
 					</section>
 
-					<section>
+					<section data-auto-animate>
 						<h3>makefile</h3>
 
 						<ul>
@@ -783,23 +783,110 @@ for nr in numbers:
 							<li>Sparar myyyycket tid :)</li>
 						</ul>
 
-						<p><em>makefile</em>:</p>
-						<pre style="font-size: 0.4em;"><code class="makefile" data-trim data-line-numbers>
-							CXX := clang++
-							CXXFLAGS := -Werror -Wall -std=c++11
-							EXECUTABLE := out
-
-							all: $(BUILD)main.o
-								$(CXX) $(CXXFLAGS) $(BUILD)main.o $(EXECUTABLE)
-							
-							$(BUILD)main.o: $(SRC)main.cpp
-								@echo "Building main.cpp"
-								$(CXX) $(CXXFLAGS) -c $(SRC)main.cpp -I$(INCLUDE) -o $(BUILD)main.o
-						</code></pre>
-
 						<p>Kompilera med kommandot:</p>
 						<pre><code class="ubuntu" data-trim>
 							make
+						</code></pre>
+
+						<p>Rensa med kommandot:</p>
+						<pre><code class="ubuntu" data-trim>
+							make clean
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>makefile</h3>
+
+						<p>Exempel på en <em>makefile</em></p>
+						<pre data-id="make" style="font-size: 0.3em;"><code class="makefile" data-trim data-line-numbers="|1-3|5-6|8-10|12-14|16-19">
+							CXX=clang++
+							CFLAGS=-c -std=c++11
+							EXECUTABLE=program
+
+							SRC=main.cpp # Add all .cpp here
+							OBJECTS=$(SRC:.cpp=.o)
+
+							all: $(OBJECTS)
+								$(CXX) $(OBJECTS) -o $(EXECUTABLE)
+								@echo "Done."
+
+							main.o: main.cpp
+								@echo "building $@"
+								$(CXX) $(CFLAGS) main.cpp
+
+							clean:
+								@rm -f $(EXECUTABLE)
+								@find . -name "*.o" -print0 | xargs -0 rm -f
+								@echo "Cleaned files."
+						</code></pre>
+
+						<pre data-id="make" style="font-size: 0.3em;"><code class="makefile" data-trim data-line-numbers>
+							# Syntax for rules in makefile
+							target: dependencies...
+								commands for generating target...
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>makefile</h3>
+
+						<p>Exempel på en <em>makefile</em></p>
+						<pre data-id="make" style="font-size: 0.3em;"><code class="makefile" data-trim data-line-numbers>
+							CXX=clang++
+							CFLAGS=-c -std=c++11
+							EXECUTABLE=program
+
+							SRC=main.cpp # Add all .cpp here
+							OBJECTS=$(SRC:.cpp=.o)
+
+							all: $(OBJECTS)
+								$(CXX) $(OBJECTS) -o $(EXECUTABLE)
+								@echo "Done."
+
+							main.o: main.cpp
+								@echo "building $@"
+								$(CXX) $(CFLAGS) main.cpp
+
+							clean:
+								@rm -f $(EXECUTABLE)
+								@find . -name "*.o" -print0 | xargs -0 rm -f
+								@echo "Cleaned files."
+						</code></pre>
+
+						Hur uttökar vi denna fil med logic.cpp och math.cpp?
+					</section>
+
+					<section data-auto-animate>
+						<h3>makefile</h3>
+
+						<pre data-id="make" style="font-size: 0.3em;"><code class="makefile" data-trim data-line-numbers="|5,16-22">
+							CXX=clang++
+							CFLAGS=-c -std=c++11
+							EXECUTABLE=program
+
+							SRC=main.cpp logic.cpp math.cpp
+							OBJECTS=$(SRC:.cpp=.o)
+
+							all: $(OBJECTS)
+								$(CXX) $(OBJECTS) -o $(EXECUTABLE)
+								@echo "Done."
+
+							main.o: main.cpp
+								@echo "building $@"
+								$(CXX) $(CFLAGS) main.cpp
+
+							logic.o: logic.cpp
+								@echo "building $@"
+								$(CXX) $(CFLAGS) logic.cpp
+
+							math.o: math.cpp
+								@echo "building $@"
+								$(CXX) $(CFLAGS) math.cpp
+
+							clean:
+								@rm -f $(EXECUTABLE)
+								@find . -name "*.o" -print0 | xargs -0 rm -f
+								@echo "Cleaned files."
 						</code></pre>
 					</section>
 				</section>
@@ -1019,13 +1106,12 @@ for nr in numbers:
 
 					<section>
 						<h3>Storlek (i <em>bytes</em>)</h3>
-						<h4>För primitiva datatyper</h4>
-						<ul>
-							<li>Finns ingen <em>fast</em> storlek per datatyp</li>
+						<ul style="font-size: 0.8em;">
+							<li>Finns ingen <em>fast</em> storlek för primitiva datatyper</li>
 							<li>Kan variera från maskin till maskin</li>
 							<li><em>Oftast</em> densamma, men ta det ej för givet</li>
 						</ul>
-						<pre><code class="cpp" data-trim>
+						<pre style="font-size: 0.5em;"><code class="cpp" data-trim>
 							// Example from my computer:
 							sizeof(char)	// 1 byte
 							sizeof(bool)	// 1 bytes
@@ -1036,7 +1122,7 @@ for nr in numbers:
 
 						<div style="display: inline-block">
 							<p>char</p>
-							<table class="memory">
+							<table class="memory" style="font-size: 0.8em;">
 								<tr>
 									<td>0</td>
 									<td>1</td>
@@ -1092,7 +1178,7 @@ for nr in numbers:
 						</div>
 						<div style="display: inline-block">
 							<p>bool</p>
-							<table class="memory">
+							<table class="memory" style="font-size: 0.8em;">
 								<tr>
 									<td>1</td>
 									<td>1</td>
@@ -1219,6 +1305,12 @@ for nr in numbers:
 							<li><em>Deklareras</em> innan användning</li>
 							<li>Har en fast datatyp som inte kan ändras</li>
 						</ul>
+
+						<pre><code class="cpp" data-trim data-line-numbers>
+							int a = 5;
+							int b = 9;
+							int sum = a + b; // sum = 5 + 9
+						</code></pre>
 					</section>
 
 					<section data-auto-animate>
@@ -1248,28 +1340,6 @@ for nr in numbers:
 						</code></pre>
 					</section>
 				</section>
-				
-				<section>
-					<section>
-						<h3>Samlingar av element</h3>
-					</section>
-
-					<section>
-						<h3>Array</h3>
-					</section>
-
-					<section>
-						<h3>Dynamisk Array</h3>
-					</section>
-
-					<section>
-						<h3>std::vector</h3>
-					</section>
-
-					<section>
-						<h3>std::map</h3>
-					</section>
-				</section>
 
 				<section>
 					<section>
@@ -1292,6 +1362,93 @@ for nr in numbers:
 						<h3>Läsa från fil</h3>
 					</section>
 				</section>
+				
+				<section>
+					<section>
+						<h3>Samlingar av element</h3>
+					</section>
+
+					<section>
+						<h3>Samlingar av element</h3>
+						
+						<p>Python <b>list</b></p>
+						<ul>
+							<li>Kan hålla godtycklig mängd element</li>
+							<li>Element kan vara av olika datatyper</li>
+							<li><em>Smart</em> indexering</li>
+						</ul>
+
+						<pre><code class="python" data-trim>
+							my_list = ["flower", 9, False, ["I PROTEC"], math.pi]
+							my_list[0] # "flower"
+							my_list[-1] # math.pi
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Samlingar av element</h3>
+						
+						<p>Samlingar i C++</p>
+						<ul>
+							<li>Alla element delar i regel samma datatyp</li>
+							<li>Indexering måste vara mellan <em>0 : (length-1)</em></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Array</h3>
+
+						<ul>
+							<li>Linjär sekvens i minnet med given datatyp</li>
+							<li>Element kan nås genom indexering</li>
+						</ul>
+
+						<pre><code class="cpp" data-trim>
+							int my_ints[3];		// Array with 3 ints
+							my_ints[0] = 11;
+							my_ints[1] = 22;
+							my_ints[2] = 33;
+
+							float my_floats[5] = {	// Array with 5 floats
+								0.14159f,
+								0.12345678f
+								13.37f,
+								82.92f
+							}
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Array</h3>
+
+						<ul>
+							<li>Storlek måste vara känd vid kompilering!</li>
+							<li>Storlek kan aldrig ändras!</li>
+						</ul>
+
+						<pre><code class="cpp" data-trim>
+							int array_size
+							std::cin >> array_size;
+							int my_array[array_size]; 	// Won't compile!
+											// array_size not defined
+											// at compile time!
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Dynamisk Array</h3>
+					</section>
+
+					<section>
+						<h3>std::vector</h3>
+					</section>
+
+					<section>
+						<h3>std::map</h3>
+					</section>
+				</section>
+
+				
 		  </div>
 	  </div>
 
