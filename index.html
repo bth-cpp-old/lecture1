@@ -21,6 +21,18 @@
 			table.memory td:nth-of-type(8n) {
 				border-right: 8px solid #f7f3de;
 			}
+
+			table.array tr {
+				font-size: 0.6em;
+				border: 1px solid black;
+				border-collapse: collapse;
+			}
+
+			table.array td {
+				border: 1px solid black;
+				border-collapse: collapse;
+				background-color: lightsteelblue;
+			}
 		</style>
 
 		<!-- Theme used for syntax highlighted code -->
@@ -1595,91 +1607,6 @@ for nr in numbers:
 
 				<section>
 					<section>
-						<h3>Samlingar av element</h3>
-					</section>
-
-					<section>
-						<h3>Samlingar av element</h3>
-						
-						<p>Python <b>list</b></p>
-						<ul>
-							<li>Kan hålla godtycklig mängd element</li>
-							<li>Element kan vara av olika datatyper</li>
-							<li><em>Smart</em> indexering</li>
-						</ul>
-
-						<pre><code class="python" data-trim>
-							my_list = ["flower", 9, False, ["I PROTEC"], math.pi]
-							my_list[0] # "flower"
-							my_list[-1] # math.pi
-						</code></pre>
-					</section>
-
-					<section>
-						<h3>Samlingar av element</h3>
-						
-						<p>Samlingar i C++</p>
-						<ul>
-							<li>Alla element delar i regel samma datatyp</li>
-							<li>Indexering måste vara mellan <em>0 : (length-1)</em></li>
-						</ul>
-					</section>
-
-					<section>
-						<h3>Array</h3>
-
-						<ul>
-							<li>Linjär sekvens i minnet med given datatyp</li>
-							<li>Element kan nås genom indexering</li>
-						</ul>
-
-						<pre><code class="cpp" data-trim>
-							int my_ints[3];		// Array with 3 ints
-							my_ints[0] = 11;
-							my_ints[1] = 22;
-							my_ints[2] = 33;
-
-							float my_floats[5] = {	// Array with 5 floats
-								0.14159f,
-								0.12345678f
-								13.37f,
-								82.92f
-							}
-						</code></pre>
-					</section>
-
-					<section>
-						<h3>Array</h3>
-
-						<ul>
-							<li>Storlek måste vara känd vid kompilering!</li>
-							<li>Storlek kan aldrig ändras!</li>
-						</ul>
-
-						<pre><code class="cpp" data-trim>
-							int array_size
-							std::cin >> array_size;
-							int my_array[array_size]; 	// Won't compile!
-											// array_size not defined
-											// at compile time!
-						</code></pre>
-					</section>
-
-					<section>
-						<h3>Dynamisk Array</h3>
-					</section>
-
-					<section>
-						<h3>std::vector</h3>
-					</section>
-
-					<section>
-						<h3>std::map</h3>
-					</section>
-				</section>
-
-				<section>
-					<section>
 						<h3>Basic I/O</h3>
 					</section>
 						
@@ -1897,6 +1824,360 @@ for nr in numbers:
 
 					<section>
 						<h3>Läsa från fil</h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Samlingar av element</h3>
+					</section>
+
+					<section>
+						<h3>Samlingar av element</h3>
+						
+						<p>Python <b>list</b></p>
+						<ul>
+							<li>Kan hålla godtycklig mängd element</li>
+							<li>Element kan vara av olika datatyper</li>
+							<li><em>Smart</em> indexering</li>
+						</ul>
+
+						<pre><code class="python" data-trim>
+							my_list = ["flower", 9, False, ["I PROTEC"], math.pi]
+							my_list[0] # "flower"
+							my_list[-1] # math.pi
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Samlingar av element</h3>
+						
+						<p>Samlingar i C++</p>
+						<ul>
+							<li>Alla element delar i regel samma datatyp</li>
+							<li>Indexering måste vara mellan <em>0 : (length-1)</em></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Array</h3>
+
+						<ul>
+							<li>En samling element av samma datatyp</li>
+							<li>Element ligger sekvensiellt i datorns minne</li>
+							<li>Har inga egna funktioner, likt primitiva datatyper</li>
+						</ul>
+
+						<table class="array" style="margin-top: 1em;">
+							<tr>
+								<td>84</td>
+								<td>23</td>
+								<td>15</td>
+								<td>86</td>
+								<td>23</td>
+								<td>64</td>
+								<td>34</td>
+								<td>24</td>
+							</tr>
+						</table>
+
+						<table class="array" style="margin-top: 1em;">
+							<tr>
+								<td>true</td>
+								<td>false</td>
+								<td>true</td>
+								<td>false</td>
+								<td>false</td>
+							</tr>
+						</table>
+					</section>
+
+					<section>
+						<h3>Array</h3>
+
+						<ul>
+							<li><b>Array</b></li>
+							<ul>
+								<li>Storlek känd vid kompilering</li>
+								<li>Kräver ej minneshantering</li>
+								<li>Även kallad 'statisk array'</li>
+							</ul>
+							<li><b>Dynamisk array</b></li>
+							<ul>
+								<li>Storlek känd under exekvering</li>
+								<li>Kräver minneshantering</li>
+							</ul>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Array</h3>
+
+						<pre style="font-size: 0.5em"><code class="cpp" data-trim>
+							int my_ints[3];		// Array with 3 ints
+							my_ints[0] = 11;
+							my_ints[1] = 22;
+							my_ints[2] = 33;
+
+							float my_floats[5] = {	// Array with 5 floats
+								0.14159f,
+								0.12345678f
+								13.37f,
+								82.92f
+							}
+
+							const int STUDENT_COUNT = 170;
+							// Initialize all elements to 'B'
+							char student_grades[STUDENT_COUNT] = { 'B' };
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Array</h3>
+
+						<pre><code class="cpp" data-trim>
+							const int STUDENT_COUNT = 170;
+							// Initialize all elements to 'B'
+							char student_grades[STUDENT_COUNT] = { 'B' };
+
+							// The student at index 35 got an A, good job!
+							stundent_grades[35] = 'A';
+
+							// Student at index 15 got the same grade as
+							// the student at index 73.
+							stundent_grades[15] = stundent_grades[73];
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Array</h3>
+
+						<ul>
+							<li>Storlek måste vara känd vid kompilering!</li>
+							<li>Storlek kan aldrig ändras!</li>
+						</ul>
+
+						<pre><code class="cpp" data-trim>
+							int array_size
+							std::cin >> array_size;
+							int my_array[array_size]; 	// Won't compile!
+											// array_size not defined
+											// at compile time!
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Flerdimensionell Array</h3>
+
+						<pre><code class="cpp" data-trim>
+							// Array of size 3;
+							// each element is an array of ints of size 4
+							int int_table[3][4];
+
+							// 28 rows
+							// 4 columns
+							bool plane_seat_occupation[28][4];
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Flerdimensionell Array</h3>
+
+						<pre style="font-size: 0.5em;"><code class="cpp" data-trim>
+							// Array of size 3;
+							// each element is an array of ints of size 4
+							int int_table[3][4] = {
+								{0, 1, 2, 3},
+								{4, 5, 6, 7},
+								{8, 9, 10, 11}
+							}
+							int int_table[3][4] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+
+							// 28 rows
+							// 4 columns
+							bool plane_seat_occupation[28][4] = { false }; // Set all to false
+
+							int my_5D_array[100][100][100][100][100];
+						</code></pre>
+
+						<table style="font-size: 0.8em;">
+							<tr style="border: 2px solid black; margin-bottom: 1em;">
+								<td style="border: 1px dotted black;">0</td>
+								<td style="border: 1px dotted black;">1</td>
+								<td style="border: 1px dotted black;">2</td>
+								<td style="border: 1px dotted black;">3</td>
+							</tr>
+							<tr style="border: 2px solid black; margin-top: 1em;">
+								<td style="border: 1px dotted black;">4</td>
+								<td style="border: 1px dotted black;">5</td>
+								<td style="border: 1px dotted black;">6</td>
+								<td style="border: 1px dotted black;">7</td>
+							</tr>
+							<tr style="border: 2px solid black;">
+								<td style="border: 1px dotted black;">8</td>
+								<td style="border: 1px dotted black;">9</td>
+								<td style="border: 1px dotted black;">10</td>
+								<td style="border: 1px dotted black;">11</td>
+							</tr>
+						</table>
+					</section>
+
+					<section>
+						<h3>Flerdimensionell Array</h3>
+
+						<p>Dessa initieringar är ekvivalent</p>
+						
+						<pre style="font-size: 0.5em;"><code class="cpp" data-trim>
+							int int_table[3][4] = {
+								{0, 1, 2, 3},
+								{4, 5, 6, 7},
+								{8, 9, 10, 11}
+							}
+						</code></pre>
+
+						<pre style="font-size: 0.5em;"><code class="cpp" data-trim>
+							int int_table[3][4] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Dynamisk Array</h3>
+
+						<ul style="font-size: 0.8em;">
+							<li>Skapas i minnet under exekvering</li>
+							<li>Du måste manuellt:</li>
+							<ul>
+								<li>Allokera minne innan användning</li>
+								<li>Deallokera minne innan avslut</li>
+							</ul>
+						</ul>
+
+						<pre style="font-size: 0.5em;"><code class="cpp" data-trim data-line-numbers>
+							// Declare pointer for array
+							int* dynamic_array;
+							
+							// Allocate memory for 10 ints
+							dynamic_array = new int[10]; 
+
+							// Deallocate memory
+							delete[] dynamic_array;
+
+							// Allocate memory for 100 ints
+							dynamic_array = new int[100];
+
+							delete[] dynamic_array;
+						</code></pre>
+
+						<p style="font-size: 0.8em;">Vi kommer fördjupa oss i dessa när vi tacklar <em>minne</em></p>
+					</section>
+
+					<section>
+						<h3>std::vector</h3>
+
+						<ul>
+							<li>Del av standardbiblioteket</li>
+							<li>Fungerar likt en array som sköter sig själv</li>
+							<li>Har hjälpfunktioner</li>
+						</ul>
+
+							<pre style="font-size: 0.5em;"><code class="cpp" data-trim>
+								#include &lt;vector&gt;
+							</code></pre>
+
+							<pre style="font-size: 0.5em;"><code class="cpp" data-trim data-line-numbers>
+								std::vector&lt;int&gt; vec;	// {}
+
+								vec.push_back(3);			// {3}
+								vec.push_back(-5);		// {3, -5}
+								vec.push_back(71);		// {3, -5, 71}
+
+								vec.pop_back();			// {3, -5}
+							</code></pre>
+					</section>
+
+					<section>
+						<h3>std::vector</h3>
+
+							<pre style="font-size: 0.5em;"><code class="cpp" data-trim>
+								#include &lt;vector&gt;
+							</code></pre>
+
+							<pre style="font-size: 0.5em;"><code class="cpp" data-trim data-line-numbers>
+								std::vector&lt;int&gt; vec;
+
+								vec.size(); // returns number of elements in vec
+								vec.empty(); // returns true if vec is empty
+								vec.clear(); // erases all elemets in vec
+								vec.erase(vec.begin() + 5); // Erase element at index 5
+							</code></pre>
+					</section>
+
+					<section>
+						<h3>std::vector</h3>
+
+							<pre style="font-size: 0.5em;"><code class="cpp" data-trim>
+								#include &lt;vector&gt;
+							</code></pre>
+
+							<pre style="font-size: 0.5em;"><code class="cpp" data-trim data-line-numbers>
+								std::vector&lt;int&gt; vec;
+
+								vec.push_back(24);
+								
+								int foo = vec[0]; // foo = 24
+								int bar = vec[5]; // Error: Index out of range
+								int bof = vec[-1]; // Error: Index out of range
+							</code></pre>
+					</section>
+
+					<section>
+						<h3>std::vector</h3>
+
+						<ul>
+							<li>Vektorer kan innehålla fler vektorer</li>
+							<li>Även kallade Multidimensionella vektorer</li>
+							<li>Sub-vektorer behöver inte ha samma storlek</li>
+						</ul>
+
+						<pre style="font-size: 0.5em;"><code class="cpp" data-trim>
+							#include &lt;vector&gt;
+						</code></pre>
+
+						<pre style="font-size: 0.5em;"><code class="cpp" data-trim data-line-numbers>
+							std::vector&lt;std::vector&lt;int&gt;&gt; some_vectors = {
+								{0, 1, 2, 3},
+								{-4, -5, -6 , -7}
+							};
+
+							some_vectors[1][2]; // == -6
+							some_vectors[0].push_back(4); // {0, 1, 2, 3, 4}
+							some_vectors.push_back(std::vector&lt;int&gt;());
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>std::map</h3>
+
+						<ul>
+							<li>Del av standardbiblioteket</li>
+							<li>Fungerar likt <em>dictionary</em> i Python</li>
+							<li>Har hjälpfunktioner</li>
+						</ul>
+
+						<pre style="font-size: 0.5em;"><code class="cpp" data-trim>
+							#include &lt;map&gt;
+						</code></pre>
+
+						<pre style="font-size: 0.5em;"><code class="cpp" data-trim data-line-numbers>
+							std::map&lt;char, int&gt; char_count; // {}
+
+							char_count['a'] = 12;		// { ('a', 12) }
+							char_count['a'] += 1;		// { ('a', 13) }
+
+							char_count['b'] = 54;		// { ('a', 12), ('b', 54) }
+						</code></pre>
+
+						<p style="font-size: 0.8em">Du bestämmer vilka datatyper <em>key</em> och <em>value</em> ska vara!</p>
 					</section>
 				</section>
 		  </div>
