@@ -28,7 +28,7 @@
 	</head>
 	<body>
 		<div class="reveal">
-			<div class="slides">
+			<div class="slides" style="tab-size: 3; -moz-tab-size: 3; -o-tab-size: 3;">
 
 				<section>
 					<h2>Föreläsning 1</h2>
@@ -304,104 +304,6 @@ int main()
 						</code></pre>
 					</section>
 
-					<section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
-						<textarea data-template>
-							## #include
-							#### Importera kodfiler eller bibliotek <!-- .element: class="fragment" -->
-						</textarea>
-					</section>
-
-					<section data-auto-animate>
-						<h4>Import - Python</h4>
-						<pre data-id="code-python"><code class="python" data-trim data-line-numbers="|1|4">
-							import random
-
-							# Random number between 10 and 100 (both included)
-							nr_of_villagers = random.randint(10, 100)
-						</code></pre>
-					</section>
-					<section data-auto-animate>
-						<h4>Import - Python</h4>
-						<pre data-id="code-python"><code class="python" data-trim data-line-numbers="2">
-							import random
-
-							# Random number between 10 and 100 (both included)
-							nr_of_villagers = random.randint(10, 100)
-						</code></pre>
-						<h4>#include - C++</h4>
-						<pre data-id="code-cpp"><code class="cpp" data-trim data-line-numbers="|1|1,4">
-							#include &lt;cstdlib&gt;
-
-							// Random number between 10 and 100 (both included)
-							int nr_of_villagers = std::rand()
-						</code></pre>
-					</section>
-
-					<section data-auto-animate>
-						<h3>Två varianter av #include</h3>
-
-						<pre data-id="code-cpp"><code class="cpp" data-trim data-line-numbers>
-							#include &lt;cstdlib&gt;
-							#include "functions.h"
-						</code></pre>
-
-						<p data-id="point-1" class="fragment">&lt; &gt; för standardbibliotek</p>
-						<p data-id="point-2" class="fragment">" " för filer i ditt projekt</p>
-						<p data-id="point-3" class="fragment">Kom ihåg att " " innehåller en filväg</p>
-					</section>
-					<section data-auto-animate>
-						<h3>Två varianter av #include</h3>
-
-						<p data-id="point-1">&lt; &gt; för standardbibliotek</p>
-						<p data-id="point-2">" " för filer i ditt projekt</p>
-						<p data-id="point-3">Kom ihåg att " " innehåller en filväg</p>
-
-						<pre data-id="code-cpp"><code class="cpp" data-trim data-line-numbers>
-							#include "core/graphics.h"
-							#include "../math/vectormath.h"
-							#include "/work/username/src/project/app/submodule/thing.h"
-						</code></pre>
-					</section>
-
-					<section data-auto-animate>
-							<h4>#include klistrar in innehållet i filen i din fil</h4>
-							header.hpp
-							<pre data-id="code-hpp"><code class="cpp" data-trim data-line-numbers>
-								#ifndef MY_HEADER
-								#define MY_HEADER
-									void my_function();
-								#endif // MY_HEADER
-							</code></pre>
-
-							<p data-id="main-tag">main.cpp</p>
-							<pre data-id="code-cpp"><code class="cpp" data-trim data-line-numbers>
-								#include "header.hpp"
-
-								int main()
-								{
-									my_function();
-									return 0;
-								}
-							</code></pre>
-					</section>
-					<section data-auto-animate>
-						<h4>#include klistrar in innehållet i filen i din fil</h4>
-
-						<p data-id="main-tag">main.cpp</p>
-						<pre data-id="code-cpp"><code class="cpp" data-trim data-line-numbers>
-							#ifndef MY_HEADER
-							#define MY_HEADER
-								void my_function();
-							#endif // MY_HEADER
-
-							int main()
-							{
-								my_function();
-								return 0;
-							}
-						</code></pre>
-					</section>
-
 					<section data-auto-animate>
 						<h3>Kommentarer</h3>
 					</section>
@@ -417,12 +319,351 @@ int main()
 						</code></pre>
 					</section>
 				</section>
+
+				<section>
+					<section>
+						<h3>Datatyper och variabler</h3>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Primitiva datatyper</h3>
+						<table>
+							<tr>
+								<th data-id="datatype">Typ</th>
+								<th>Betydelse</th>
+							</tr>
+							<tr>
+								<td data-id="datatype"><em>bool</em></td>
+								<td>boolean</td>
+							</tr>
+							<tr>
+								<td data-id="datatype"><em>char</em></td>
+								<td>character</td>
+							</tr>
+							<tr>
+								<td data-id="datatype"><em>int</em></td>
+								<td>integer</td>
+							</tr>
+							<tr>
+								<td data-id="datatype"><em>float</em></td>
+								<td>single-precision floating-point</td>
+							</tr>
+							<tr>
+								<td data-id="datatype"><em>double</em></td>
+								<td>double-precision floating-point</td>
+							</tr>
+						</table>
+						<p>Finns fler.</p>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Primitiva datatyper</h3>
+						<table>
+							<tr>
+								<th data-id="datatype">Typ</th>
+								<th>Exempel</th>
+							</tr>
+							<tr>
+								<td data-id="datatype"><em>bool</em></td>
+								<td>true false</td>
+							</tr>
+							<tr>
+								<td data-id="datatype"><em>char</em></td>
+								<td>'a' 'B' '\n'</td>
+							</tr>
+							<tr>
+								<td data-id="datatype"><em>int</em></td>
+								<td>1 -4 1338</td>
+							</tr>
+							<tr>
+								<td data-id="datatype"><em>float</em></td>
+								<td>3.14f -0.02f</td>
+							</tr>
+							<tr>
+								<td data-id="datatype"><em>double</em></td>
+								<td>3.14 -0.02</td>
+							</tr>
+						</table>
+						<p>Finns fler.</p>
+					</section>
+
+					<section>
+						<h3>Vad är en datatyp?</h3>
+						<h4>Bestämmer <b>hur</b> data i minnet ska läsas</h4>
+
+						<table class="memory">
+							<tr>
+								<td>0</td>
+								<td>1</td>
+								<td>0</td>
+								<td>0</td>
+								<td>1</td>
+								<td>0</td>
+								<td>1</td>
+								<td>0</td>
+							</tr>
+						</table>
+
+						<table>
+							<tr>
+								<th>Datatyp</th>
+								<th>Värde</th>
+							</tr>
+							<tr>
+								<td><em>int</em></td>
+								<td>74</td>
+							</tr>
+							<tr>
+								<td><em>bool</em></td>
+								<td><em>true</em></td>
+							</tr>
+							<tr>
+								<td><em>char</em></td>
+								<td>'J'</td>
+							</tr>
+						</table>
+					</section>
+
+					<section>
+						<h3>Storlek (i <em>bytes</em>)</h3>
+						<ul style="font-size: 0.8em;">
+							<li>Finns ingen <em>fast</em> storlek för primitiva datatyper</li>
+							<li>Kan variera från maskin till maskin</li>
+							<li><em>Oftast</em> densamma, men ta det ej för givet</li>
+						</ul>
+						<pre style="font-size: 0.5em;"><code class="cpp" data-trim>
+							// Example from my computer:
+							sizeof(char)	// 1 byte
+							sizeof(bool)	// 1 bytes
+							sizeof(int)	// 4 bytes
+							sizeof(float)	// 4 bytes
+							sizeof(double)	// 8 bytes
+						</code></pre>
+
+						<div style="display: inline-block">
+							<p>char</p>
+							<table class="memory" style="font-size: 0.8em;">
+								<tr>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+								</tr>
+							</table>
+
+							<p>int</p>
+							<table class="memory" style="font-size: 0.3em;">
+								<tr>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+								</tr>
+							</table>
+						</div>
+						<div style="display: inline-block">
+							<p>bool</p>
+							<table class="memory" style="font-size: 0.8em;">
+								<tr>
+									<td>1</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>0</td>
+								</tr>
+							</table>
+
+							<p>double</p>
+							<table class="memory" style="font-size: 0.3em;">
+								<tr>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+
+									<td>1</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>1</td>
+
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+								</tr>
+							</table>
+							<table class="memory" style="font-size: 0.3em;">
+								<tr>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>1</td>
+									<td>0</td>
+
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+								</tr>
+							</table>
+						</div>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Modifierare</h3>
+						<h4>För primitiva datatyper</h4>
+						<ul>
+							<li><b>signed</b> tillåter positiva heltal</li>
+							<li><b>unsigned</b> tillåter negativa heltal</li>
+							<li><b>short</b> minskar storlek på datatyp</li>
+							<li><b>long</b> ökar storlek på datatyp</li>
+						</ul>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Modifierare</h3>
+						<h4>För primitiva datatyper</h4>
+						<p><b data-id="singed">signed</b>, <b>unsigned, short, long</b></p>
+						<pre><code class="cpp" data-trim>
+							// Example from my computer
+							short int	// 2 bytes,	-32'768 to 32'767
+							unsigned short int // 2 bytes,	0 to 65'535
+							unsigned int	// 4 bytes,	0 to 4'294'967'295
+							int		// 4 bytes,	-2'147'483'648 to 2'147'483'647
+							long int	// 8 bytes,	-(2^63) till (2^63)-1
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Variabler</h3>
+						<ul>
+							<li>Ett namngivet minnesutrymme</li>
+							<li><em>Deklareras</em> innan användning</li>
+							<li>Har en fast datatyp som inte kan ändras</li>
+						</ul>
+
+						<pre><code class="cpp" data-trim data-line-numbers>
+							int a = 5;
+							int b = 9;
+							int sum = a + b; // sum = 5 + 9
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Variabler</h3>
+
+						<ul>
+							<li><b>Deklarering</b></li>
+							<ul style="font-size: 0.8em;">
+								<li>Det existerar en variabel med namnet ...</li>
+								<li>Kan definieras flera gånger</li>
+								<li>Inget minne allokeras</li>
+							</ul>
+
+							<li><b>Definiering</b></li>
+							<ul style="font-size: 0.8em;">
+								<li>Variabeln får värdet ...</li>
+								<li>Kan <b>endast</b> göras en gång</li>
+								<li>Minne allokeras för variabeln</li>
+							</ul>
+						</ul>
+
+						<pre><code class="cpp" data-trim data-line-numbers>
+							int foo, bar; // Declaration of foo and bar
+							foo = 5; // Definition of foo
+							
+							foo = bar; // Undefined behavior! bar not defined
+						</code></pre>
+					</section>
+				</section>
 			
 				<section>
-					<section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
-						<textarea data-template>
-							## Kompilering
-						</textarea>
+					<section>
+						<h3>Kompilering</h3>
 					</section>
 
 					<section data-auto-animate>
@@ -484,6 +725,15 @@ for nr in numbers:
 							<li>Detta kallas att <b>komilera</b></li>
 							<li>Detta sköts av en <b>kompilator</b></li>
 						</ul>
+					</section>
+					<section data-auto-animate>
+						<h3>Programkod till maskinkod</h3>
+						<p>Hela sagan:</p>
+						<ol style="font-size: 0.8em">
+							<li><b>Preprocessor</b> processerar källfiler</li>
+							<li><b>Kompilatorn</b> kompilerar processerade källfiler till objektfiler</li>
+							<li><b>Länkaren</b> länkar ihop objektfiler till en körbar fil</li>
+						</ol>
 					</section>
 
 					
@@ -1002,367 +1252,347 @@ for nr in numbers:
 
 				<section>
 					<section>
-						<h3>Datatyper och variabler</h3>
+						<h3>Arbeta med fler filer</h3>
 					</section>
 
 					<section data-auto-animate>
-						<h3>Primitiva datatyper</h3>
-						<table>
-							<tr>
-								<th data-id="datatype">Typ</th>
-								<th>Betydelse</th>
-							</tr>
-							<tr>
-								<td data-id="datatype"><em>bool</em></td>
-								<td>boolean</td>
-							</tr>
-							<tr>
-								<td data-id="datatype"><em>char</em></td>
-								<td>character</td>
-							</tr>
-							<tr>
-								<td data-id="datatype"><em>int</em></td>
-								<td>integer</td>
-							</tr>
-							<tr>
-								<td data-id="datatype"><em>float</em></td>
-								<td>single-precision floating-point</td>
-							</tr>
-							<tr>
-								<td data-id="datatype"><em>double</em></td>
-								<td>double-precision floating-point</td>
-							</tr>
-						</table>
-						<p>Finns fler.</p>
+						<h3>#include</h3>
+						<h4>Importerar kodfiler eller bibliotek</h4>
 					</section>
 
 					<section data-auto-animate>
-						<h3>Primitiva datatyper</h3>
-						<table>
-							<tr>
-								<th data-id="datatype">Typ</th>
-								<th>Exempel</th>
-							</tr>
-							<tr>
-								<td data-id="datatype"><em>bool</em></td>
-								<td>true false</td>
-							</tr>
-							<tr>
-								<td data-id="datatype"><em>char</em></td>
-								<td>'a' 'B' '\n'</td>
-							</tr>
-							<tr>
-								<td data-id="datatype"><em>int</em></td>
-								<td>1 -4 1338</td>
-							</tr>
-							<tr>
-								<td data-id="datatype"><em>float</em></td>
-								<td>3.14f -0.02f</td>
-							</tr>
-							<tr>
-								<td data-id="datatype"><em>double</em></td>
-								<td>3.14 -0.02</td>
-							</tr>
-						</table>
-						<p>Finns fler.</p>
+						<h4>Import - Python</h4>
+						<pre data-id="code-python"><code class="python" data-trim data-line-numbers>
+							import random
+
+							# Random number between 10 and 100 (both included)
+							nr_of_villagers = random.randint(10, 100)
+						</code></pre>
 					</section>
 
-					<section>
-						<h3>Vad är en datatyp?</h3>
-						<h4>Bestämmer <b>hur</b> data i minnet ska läsas</h4>
+					<section data-auto-animate>
+						<h4>Import - Python</h4>
+						<pre data-id="code-python"><code class="python" data-trim data-line-numbers>
+							import random
 
-						<table class="memory">
-							<tr>
-								<td>0</td>
-								<td>1</td>
-								<td>0</td>
-								<td>0</td>
-								<td>1</td>
-								<td>0</td>
-								<td>1</td>
-								<td>0</td>
-							</tr>
-						</table>
+							# Random number between 10 and 100 (both included)
+							nr_of_villagers = random.randint(10, 100)
+						</code></pre>
+						<h4>#include - C++</h4>
+						<pre data-id="code-cpp"><code class="cpp" data-trim data-line-numbers>
+							#include &lt;cstdlib&gt;
+							#include &lt;ctime&gt;
 
-						<table>
-							<tr>
-								<th>Datatyp</th>
-								<th>Värde</th>
-							</tr>
-							<tr>
-								<td><em>int</em></td>
-								<td>74</td>
-							</tr>
-							<tr>
-								<td><em>bool</em></td>
-								<td><em>true</em></td>
-							</tr>
-							<tr>
-								<td><em>char</em></td>
-								<td>'J'</td>
-							</tr>
-						</table>
+							srand(time(NULL)); // Set seed based on time
+
+							// std::rand()					-> [0-RAND_MAX] inclusive
+							// std::rand() % 91			-> [0-90] inclusive
+							// std::rand() % 91 + 10	-> [10-100] inclusive
+							int nr_of_villagers = std::rand() % 91 + 10
+						</code></pre>
 					</section>
 
-					<section>
-						<h3>Storlek (i <em>bytes</em>)</h3>
-						<ul style="font-size: 0.8em;">
-							<li>Finns ingen <em>fast</em> storlek för primitiva datatyper</li>
-							<li>Kan variera från maskin till maskin</li>
-							<li><em>Oftast</em> densamma, men ta det ej för givet</li>
-						</ul>
-						<pre style="font-size: 0.5em;"><code class="cpp" data-trim>
-							// Example from my computer:
-							sizeof(char)	// 1 byte
-							sizeof(bool)	// 1 bytes
-							sizeof(int)	// 4 bytes
-							sizeof(float)	// 4 bytes
-							sizeof(double)	// 8 bytes
+					<section data-auto-animate>
+						<h3>Två varianter av #include</h3>
+
+						<pre data-id="code-cpp"><code class="cpp" data-trim data-line-numbers>
+							#include &lt;cstdlib&gt;
+							#include "functions.h"
 						</code></pre>
 
-						<div style="display: inline-block">
-							<p>char</p>
-							<table class="memory" style="font-size: 0.8em;">
-								<tr>
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-								</tr>
-							</table>
+						<p data-id="point-1">&lt; &gt; för standardbibliotek</p>
+						<p data-id="point-2">" " för filer i ditt projekt</p>
+						<p data-id="point-3" class="fragment">Kom ihåg att " " innehåller en sökväg</p>
+					</section>
+					<section data-auto-animate>
+						<h3>Två varianter av #include</h3>
 
-							<p>int</p>
-							<table class="memory" style="font-size: 0.3em;">
-								<tr>
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
+						<p data-id="point-1">&lt; &gt; för standardbibliotek</p>
+						<p data-id="point-2">" " för filer i ditt projekt</p>
+						<p data-id="point-3">Kom ihåg att " " innehåller en sökväg</p>
 
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
+						<pre data-id="code-cpp"><code class="cpp" data-trim data-line-numbers>
+							#include "core/graphics.hpp"
+							#include "../math/vectormath.hpp"
+							#include "/work/username/src/project/app/submodule/thing.hpp"
+						</code></pre>
+					</section>
 
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
+					<section data-auto-animate>
+						<h4>Kod från inkluderad fil klistras in</h4>
+						header.hpp
+						<pre data-id="code-hpp"><code class="cpp" data-trim data-line-numbers>
+							void my_function();
+							const float PI = 3.1415f;
+							const bool A_BOOL_THAT_IS_ALWAYS_TRUE = true;
+						</code></pre>
 
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-								</tr>
-							</table>
+						<p data-id="main-tag">main.cpp</p>
+						<pre data-id="code-cpp"><code class="cpp" data-trim data-line-numbers>
+							#include "header.hpp"
+
+							int main()
+							{
+								my_function();
+								return 0;
+							}
+						</code></pre>
+					</section>
+					<section data-auto-animate>
+						<h4>Kod från inkluderad fil klistras in</h4>
+
+						<p data-id="main-tag">main.o</p>
+						<pre data-id="code-cpp"><code class="cpp" data-trim data-line-numbers>
+							void my_function();
+							const float PI = 3.1415f;
+							const bool A_BOOL_THAT_IS_ALWAYS_TRUE = true;
+
+							int main()
+							{
+								my_function();
+								return 0;
+							}
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3><em>#include guards</em></h3>
+					</section>
+
+					<section data-auto-animate>
+						<h3><em>#include guards</em></h3>
+
+						<div style="width:50%; float: left; font-size: 0.7em">
+							<p>main.cpp</p>
+							<pre data-id="main"><code class="cpp" data-trim data-line-numbers>
+								#include "math.hpp"
+								#include "logic.hpp"
+
+								int main() {
+									float area = get_circle_area(5.f);
+									return 0;
+								}
+							</code></pre>
 						</div>
-						<div style="display: inline-block">
-							<p>bool</p>
-							<table class="memory" style="font-size: 0.8em;">
-								<tr>
-									<td>1</td>
-									<td>1</td>
-									<td>0</td>
-									<td>0</td>
-									<td>1</td>
-									<td>1</td>
-									<td>1</td>
-									<td>0</td>
-								</tr>
-							</table>
+						<div style="width:50%; float: right; font-size: 0.7em">
+							<p>math.hpp</p>
+							<pre data-id="header"><code class="cpp" data-trim data-line-numbers>
+								const float PI = 3.14159f;
+							</code></pre>
 
-							<p>double</p>
-							<table class="memory" style="font-size: 0.3em;">
-								<tr>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
+							<p>logic.hpp</p>
+							<pre data-id="header"><code class="cpp" data-trim data-line-numbers>
+								#include "math.hpp"
 
-									<td>1</td>
-									<td>1</td>
-									<td>0</td>
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-									<td>1</td>
-									<td>1</td>
-
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>1</td>
-									<td>1</td>
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-									<td>0</td>
-									<td>1</td>
-								</tr>
-							</table>
-							<table class="memory" style="font-size: 0.3em;">
-								<tr>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>1</td>
-									<td>1</td>
-									<td>0</td>
-
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-
-									<td>0</td>
-									<td>1</td>
-									<td>0</td>
-									<td>1</td>
-									<td>1</td>
-									<td>1</td>
-									<td>1</td>
-									<td>1</td>
-								</tr>
-							</table>
+								float get_circle_area(float radius) {
+									return PI * radius * radius;
+								}
+							</code></pre>
 						</div>
 					</section>
 
 					<section data-auto-animate>
-						<h3>Modifierare</h3>
-						<h4>För primitiva datatyper</h4>
-						<ul>
-							<li><b>signed</b> tillåter positiva heltal</li>
-							<li><b>unsigned</b> tillåter negativa heltal</li>
-							<li><b>short</b> minskar storlek på datatyp</li>
-							<li><b>long</b> ökar storlek på datatyp</li>
-						</ul>
+						<h3><em>#include guards</em></h3>
+
+						<p style="font-size: 0.8em">Detta kan ej länkas, PI definieras mer än en gång!</p>
+
+						<div style="width:50%; float: left; font-size: 0.7em">
+							<p>main.o</p>
+							<pre data-id="main"><code class="cpp" data-trim data-line-numbers>
+								const float PI = 3.14159f;
+								const float PI = 3.14159f;
+
+								float get_circle_area(float radius) {
+									return PI * radius * radius;
+								}
+
+								int main() {
+									float area = get_circle_area(5.f);
+									return 0;
+								}
+							</code></pre>
+						</div>			
+						<div style="width:50%; float: right; font-size: 0.7em">
+							<p>math.hpp</p>
+							<pre data-id="header"><code class="cpp" data-trim data-line-numbers>
+								const float PI = 3.14159f;
+							</code></pre>
+
+							<p>logic.hpp</p>
+							<pre data-id="header"><code class="cpp" data-trim data-line-numbers>
+								#include "math.hpp"
+
+								float get_circle_area(float radius) {
+									return PI * radius * radius;
+								}
+							</code></pre>
+						</div>
 					</section>
 
 					<section data-auto-animate>
-						<h3>Modifierare</h3>
-						<h4>För primitiva datatyper</h4>
-						<p><b data-id="singed">signed</b>, <b>unsigned, short, long</b></p>
-						<pre><code class="cpp" data-trim>
-							// Example from my computer
-							short int	// 2 bytes,	-32'768 to 32'767
-							unsigned short int // 2 bytes,	0 to 65'535
-							unsigned int	// 4 bytes,	0 to 4'294'967'295
-							int		// 4 bytes,	-2'147'483'648 to 2'147'483'647
-							long int	// 8 bytes,	-(2^63) till (2^63)-1
+						<h3><em>#include guards</em></h3>
+
+						<p style="font-size: 0.8em">Använd <em>#include guards</em>!</p>
+
+						<div style="width:50%; float: left; font-size: 0.6em">
+							<p>main.o</p>
+							<pre data-id="main"><code class="cpp" data-trim data-line-numbers>
+								#include "math.hpp"
+								#include "logic.hpp"
+
+								float get_circle_area(float radius) {
+									return PI * radius * radius;
+								}
+
+								int main() {
+									float area = get_circle_area(5.f);
+									return 0;
+								}
+							</code></pre>
+						</div>			
+						<div style="width:50%; float: right; font-size: 0.6em">
+							<p>math.hpp</p>
+							<pre data-id="header"><code class="cpp" data-trim data-line-numbers>
+								#ifndef MATH_HPP
+								#define MATH_HPP
+								const float PI = 3.14159f;	
+								#endif
+							</code></pre>
+
+							<p>logic.hpp</p>
+							<pre data-id="header"><code class="cpp" data-trim data-line-numbers>
+								#ifndef LOGIC_HPP
+								#define LOGIC_HPP
+
+								#include "math.hpp"
+
+								float get_circle_area(float radius) {
+									return PI * radius * radius;
+								}
+
+								#endif
+							</code></pre>
+						</div>
+					</section>
+
+					<section data-auto-animate>
+						<h3><em>#include guards</em></h3>
+
+						<p style="font-size: 0.8em">Använd <em>#include guards</em>!</p>
+						<p style="font-size: 0.8em">Endast första definitionen existerar nu</p>
+
+						<div style="width:50%; float: left; font-size: 0.6em">
+							<p>main.o</p>
+							<pre data-id="main"><code class="cpp" data-trim data-line-numbers="|1-4,9-12|1-4">
+								#ifndef MATH_HPP
+								#define MATH_HPP
+								const float PI = 3.14159f;	
+								#endif
+
+								#ifndef LOGIC_HPP
+								#define LOGIC_HPP
+
+								#ifndef MATH_HPP
+								#define MATH_HPP
+								const float PI = 3.14159f;	
+								#endif
+
+								float get_circle_area(float radius) {
+									return PI * radius * radius;
+								}
+
+								#endif
+
+								int main() {
+									float area = get_circle_area(5.f);
+									return 0;
+								}
+							</code></pre>
+						</div>			
+						<div style="width:50%; float: right; font-size: 0.6em">
+							<p>math.hpp</p>
+							<pre data-id="header"><code class="cpp" data-trim data-line-numbers>
+								#ifndef MATH_HPP
+								#define MATH_HPP
+								const float PI = 3.14159f;	
+								#endif
+							</code></pre>
+
+							<p>logic.hpp</p>
+							<pre data-id="header"><code class="cpp" data-trim data-line-numbers>
+								#ifndef LOGIC_HPP
+								#define LOGIC_HPP
+
+								#include "math.hpp"
+
+								float get_circle_area(float radius) {
+									return PI * radius * radius;
+								}
+
+								#endif
+							</code></pre>
+						</div>
+					</section>
+
+					<section>
+						<h3><em>#include guards</em></h3>
+
+						<ul style="font-size: 0.6em;">
+							<li>Nedan är hur main.cpp ser ut efter preprocessor</li>
+							<li>Preprocessor översätter alla #includes och macros</li>
+							<li>Det är denna kod som faktiskt kopileras</li>
+						</ul>
+
+						<pre data-id="header" style="font-size: 0.3em;"><code class="cpp" data-trim>
+							cpp main.cpp	
+						</code></pre>
+
+						<pre data-id="header" style="font-size: 0.3em;"><code class="cpp" data-trim data-line-numbers>
+						# 1 "main.cpp"
+						# 1 "&lt;built-in&gt;"
+						# 1 "&lt;command-line&gt;"
+						# 1 "/usr/include/stdc-predef.h" 1 3 4
+						# 1 "&lt;command-line&gt;" 2
+						# 1 "main.cpp"
+						# 1 "math.hpp" 1
+
+
+						const float PI = 3.14159f;
+						# 2 "main.cpp" 2
+						# 1 "logic.hpp" 1
+
+
+						float get_circle_area(float radius) {
+							return PI * radius * radius;
+						}
+						# 3 "main.cpp" 2
+
+						int main() {
+							float area = get_circle_area(5.f);
+							return 0;
+						}
 						</code></pre>
 					</section>
 
-					<section data-auto-animate>
-						<h3>Variabler</h3>
-						<ul>
-							<li>Ett namngivet minnesutrymme</li>
-							<li><em>Deklareras</em> innan användning</li>
-							<li>Har en fast datatyp som inte kan ändras</li>
-						</ul>
+					<section>
+						<h3><em>#include guards</em></h3>
+						<h2>Att ta med dig</h2>
 
-						<pre><code class="cpp" data-trim data-line-numbers>
-							int a = 5;
-							int b = 9;
-							int sum = a + b; // sum = 5 + 9
-						</code></pre>
-					</section>
+						<p>Omringa all kod i headerfiler med <em>#include guards</em></p>
 
-					<section data-auto-animate>
-						<h3>Variabler</h3>
-
-						<ul>
-							<li><b>Deklarering</b></li>
-							<ul style="font-size: 0.8em;">
-								<li>Det existerar en variabel med namnet ...</li>
-								<li>Kan definieras flera gånger</li>
-								<li>Inget minne allokeras</li>
-							</ul>
-
-							<li><b>Definiering</b></li>
-							<ul style="font-size: 0.8em;">
-								<li>Variabeln får värdet ...</li>
-								<li>Kan <b>endast</b> göras en gång</li>
-								<li>Minne allokeras för variabeln</li>
-							</ul>
-						</ul>
-
-						<pre><code class="cpp" data-trim data-line-numbers>
-							int foo, bar; // Declaration of foo and bar
-							foo = 5; // Definition of foo
+						<pre><code class="hpp" data-trim data-line-numbers>
+							#ifndef NAME_HPP
+							#define NAME_HPP
 							
-							foo = bar; // Undefined behavior! bar not defined
+							/*
+								Put your bug-free code here
+							*/
+
+							#endif
 						</code></pre>
 					</section>
 				</section>
 
-				<section>
-					<section>
-						<h3>Basic I/O</h3>
-					</section>
-
-					<section>
-						<h3>Utmatning i terminal</h3>
-					</section>
-
-					<section>
-						<h3>Inmatning från terminal</h3>
-					</section>
-
-					<section>
-						<h3>Skriva till fil</h3>
-					</section>
-
-					<section>
-						<h3>Läsa från fil</h3>
-					</section>
-				</section>
-				
 				<section>
 					<section>
 						<h3>Samlingar av element</h3>
@@ -1448,7 +1678,227 @@ for nr in numbers:
 					</section>
 				</section>
 
-				
+				<section>
+					<section>
+						<h3>Basic I/O</h3>
+					</section>
+						
+					<section>
+						<h3>Basic I/O</h3>
+
+						<ul>
+							<li>Memorera standardbiblioteket <em>iostream</em></li>
+							<li>Denna kommer användas mycket</li>
+						</ul>
+
+						<pre><code class="cpp" data-trim data-line-numbers>
+							#include &lt;iostream&gt;
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Basic I/O</h3>
+
+						<p>Finns fyra I/O-objekt (strömmar) i standardbiblioteket:</p>
+						<table>
+							<tr>
+								<th>Namn</th>
+								<th>Hanterar</th>
+								<th>Typ</th>
+							</tr>
+							<tr>
+								<td data-id="cin"><b>cin</b></td>
+								<td data-id="input">input</td>
+								<td>istream</td>
+							</tr>
+							<tr>
+								<td data-id="cout"><b>out</b></td>
+								<td data-id="output">output</td>
+								<td>ostream</td>
+							</tr>
+							<tr>
+								<td><b>cerr</b></td>
+								<td>error</td>
+								<td>ostream</td>
+							</tr>
+							<tr>
+								<td><b>clog</b></td>
+								<td>exekveringsinfo.</td>
+								<td>ostream</td>
+							</tr>
+						</table>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Basic I/O</h3>
+
+						<p>Vi kommer fokusera på:</p>
+						<table>
+							<tr>
+								<td data-id="cin"><b>cin</b></td>
+								<td data-id="input">input</td>
+							</tr>
+							<tr>
+								<td data-id="cout"><b>out</b></td>
+								<td data-id="output">output</td>
+							</tr>
+						</table>
+					</section>
+
+
+					<section data-auto-animate>
+						<h3>Utmatning i terminal</h3>
+
+						<pre><code class="cpp" data-trim data-line-numbers>
+							#include &lt;iostream&gt;
+
+							int main() {
+								std::cout << "Hello world!" << std::endl;
+								return 0;
+							}
+						</code></pre>
+
+						<pre><code class="Linux-terminal" data-trim>
+							Hello world!
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Utmatning i terminal</h3>
+
+						<pre><code class="cpp" data-trim data-line-numbers>
+							#include &lt;iostream&gt;
+
+							int main() {
+								int my_int = 5;
+								float my_float = 13.37f;
+								std::string my_string = "\"Don't quote me\" - Mattias";
+
+								std::cout << "my_int: " << my_int;
+								std::cout << "my_float: " << my_float;
+								std::cout << "my_string: " << my_string;
+								std::cout << std::endl;
+								return 0;
+							}
+						</code></pre>
+
+						<pre><code class="Linux-terminal" data-trim>
+							my_int: 5my_float: 13.37my_string: "Don't quote me" - Mattias
+						</code></pre>
+
+						<p>Svårt att läsa output, lägg till radbryte</p>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Utmatning i terminal</h3>
+
+						<pre><code class="cpp" data-trim data-line-numbers>
+							#include &lt;iostream&gt;
+
+							int main() {
+								int my_int = 5;
+								float my_float = 13.37f;
+								std::string my_string = "\"Don't quote me\" - Mattias";
+
+								std::cout << "my_int: " << my_int;
+								std::cout << "\nmy_float: " << my_float;
+								std::cout << "\nmy_string: " << my_string;
+								std::cout << std::endl;
+								return 0;
+							}
+						</code></pre>
+
+						<pre><code class="Linux-terminal" data-trim>
+							my_int: 5
+							my_float: 13.37
+							my_string: "Don't quote me" - Mattias
+						</code></pre>
+						
+						<p>Behöver bara kalla cout <b>en</b> gång</p>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Utmatning i terminal</h3>
+
+						<pre><code class="cpp" data-trim data-line-numbers>
+							#include &lt;iostream&gt;
+
+							int main() {
+								int my_int = 5;
+								float my_float = 13.37f;
+								std::string my_string = "\"Don't quote me\" - Mattias";
+
+								std::cout << "my_int: " << my_int
+									<< "\nmy_float: " << my_float
+									<< "\nmy_string: " << my_string
+									<< std::endl;
+								return 0;
+							}
+						</code></pre>
+
+						<pre><code data-trim>
+							my_int: 5
+							my_float: 13.37
+							my_string: "Don't quote me" - Mattias
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Inmatning från terminal</h3>
+
+						<pre><code class="cpp" data-trim data-line-numbers>
+							#include &lt;iostream&gt;
+
+							int main() {
+								std::string name;
+								std::cout << "Please enter your name: ";
+								std::cin >> name;
+								std::cout << "Hello " << name << "!" << std::endl;
+								return 0;
+							}
+						</code></pre>
+
+						<pre><code class="cpp" data-trim>
+							Please enter your name: Marcus
+							Hello Marcus!
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Inmatning från terminal</h3>
+
+						<pre><code class="cpp" data-trim data-line-numbers>
+							#include &lt;iostream&gt;
+
+							int main() {
+								std::cout << "Enter a char and an int"
+								<< " (separated by a space): ";
+								
+								char my_char;
+								int my_int;
+								std::cin >> my_char >> my_int;
+								my_char += 1; // Increment by 1
+								my_int += 1; // Increment by 1
+
+								std::cout << my_char << " " << my_int << std::endl;
+								return 0;
+							}
+						</code></pre>
+
+						<pre><code class="bash" data-trim>
+							Enter a char and an int (separated by a space): a 3
+							b 4
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Skriva till fil</h3>
+					</section>
+
+					<section>
+						<h3>Läsa från fil</h3>
+					</section>
+				</section>
 		  </div>
 	  </div>
 
