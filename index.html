@@ -1603,6 +1603,68 @@ for nr in numbers:
 							#endif
 						</code></pre>
 					</section>
+
+					<section>
+						<h3>Namespace</h3>
+
+						<ul>
+							<li>Undviker namnkonflikter</li>
+						</ul>
+
+						<pre><code class="hpp" data-trim data-line-numbers>
+							#include "math.hpp"; // has variable PI
+							#include "core.hpp"; // has variable PI
+
+							float foo = PI; // Which one to use?
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Namespace</h3>
+
+						<ul>
+							<li>Undviker namnkonflikter</li>
+							<li>Gäller både funktioner och variabler</li>
+						</ul>
+						<pre><code class="cpp" data-trim>
+							namespace_name::something_from_namespace
+						</code></pre>
+
+						<div style="width: 50%; float: left; font-size: 0.8em;">
+							<pre><code class="hpp" data-trim data-line-numbers>
+								#include "math.hpp";
+								#include "core.hpp";
+	
+
+
+
+								float foo = Math::PI;
+								float bar = Core::PI;
+
+
+
+
+								foo; // == 3.14159265359f
+								bar; // == 3.14f
+							</code></pre>
+						</div>	
+
+						<div style="width: 50%; float: right; font-size: 0.8em;">
+							<p>math.hpp</p>
+							<pre><code class="hpp" data-trim data-line-numbers>
+								namespace Math {
+									const float PI = 3.14159265359f;
+								}
+							</code></pre>
+
+							<p>core.hpp</p>
+							<pre><code class="hpp" data-trim data-line-numbers>
+								namespace Core {
+									const float PI = 3.14f;
+								}
+							</code></pre>
+						</div>
+					</section>
 				</section>
 
 				<section>
@@ -1771,6 +1833,88 @@ for nr in numbers:
 					</section>
 
 					<section>
+						<h3>Kort om strängar</h3>
+
+						<ul>
+							<li>Skillnad char och string</li>
+							<pre><code class="cpp" data-trim>
+								'A'					// char
+								"Multiple chars"	// string
+								"B"					// string
+								'To many'			// Error
+							</code></pre>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Kort om strängar</h3>
+
+						<ul>
+							<li>Råa strängar är konstanter</li>
+							<li>Dessa kan inte modifieras</li>
+						</ul>
+
+						<pre><code class="cpp" data-trim>
+							"Hello" + " " + "world!" // Error!
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Kort om strängar</h3>
+
+						<ul>
+							<li>Ok att skriva utskrifter med dessa</li>
+							<li>Detta då "<<" <em>binder samman</em> strängar</li>
+						</ul>
+
+						<pre><code class="cpp" data-trim data-line-numbers>
+							std::cout << "Hello" << " " << "world!" << std::endl; // Ok!
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Kort om strängar</h3>
+
+						<ul>
+							<li>std::string kan hantera text</li>
+							<li>Smidigt vid in- och utmatning</li>
+							<li>Djupare förklaring kommer vid senare föreläsning</li>
+						</ul>
+
+						<pre><code class="cpp" data-trim>
+							#include &lt;string&gt;
+						</code></pre>
+
+						<pre><code class="cpp" data-trim data-line-numbers>
+							std::string my_text = "Hello";
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Kort om strängar</h3>
+
+						<pre><code class="cpp" data-trim>
+							#include &lt;string&gt;
+						</code></pre>
+
+						<pre><code class="cpp" data-trim data-line-numbers>
+							std::string foo;
+							foo = "Hello" + " world!"; // Error
+
+							foo = "Hello";			// "Hello"
+							foo += " world!";		// "Hello world!"
+							foo = "Omg, " + foo;	// "Omg, Hello world!"
+						</code></pre>
+
+						<pre><code class="cpp" data-trim data-line-numbers>
+							std::string bar = "Hello world!";
+							
+							bar[1]; // 'e'
+							bar.size(); // 12
+						</code></pre>
+					</section>
+
+					<section>
 						<h3>Inmatning från terminal</h3>
 
 						<pre><code class="cpp" data-trim data-line-numbers>
@@ -1819,11 +1963,152 @@ for nr in numbers:
 					</section>
 
 					<section>
+						<h3>Basic filhantering</h3>
+						<ul>
+							<li>Djupare förståelse på senare föreläsning</li>
+							<li>Idag visas grundläggande:</li>
+							<ul>
+								<li>Läsa från fil</li>
+								<li>Skriva till fil</li>
+							</ul>
+						</ul>
+					</section>
+
+					<section>
 						<h3>Skriva till fil</h3>
+
+						<pre><code class="cpp" data-trim>
+							#include &lt;fstream&gt; // ofstream
+						</code></pre>
+
+						<pre float><code class="cpp" data-trim data-line-numbers>
+							std::ofstream file("textfile.txt");
+
+							if (file.is_open()) {
+
+								// Write to file
+
+								file.close();
+							}
+							else {
+								// Handle errors
+							}
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Skriva till fil</h3>
+
+						<div style="width: 50%; float: left; font-size: 0.7em;">
+							<pre><code class="cpp" data-trim>
+								#include &lt;iostream&gt; // cout
+								#include &lt;fstream&gt; // ofstream
+							</code></pre>
+
+							<pre float><code class="cpp" data-trim data-line-numbers>
+								std::ofstream file("filepath");
+
+								if (file.is_open()) {
+									file << "My first line!\n";
+
+									file << "This is on the same";
+									file << " row as this text";
+
+									file << "\n\nTabbed number:\t" << 10;
+									file << "\Another:\t" << 10;
+
+									file.close();
+								}
+								else {
+									std::cout << "Unable to open file."
+									<< std::endl;
+								}
+							</code></pre>
+						</div>
+						<div style="width: 50%; float: right; font-size: 0.7em;">
+							<p>textfile.txt</p>
+							<pre float><code class="txt" data-trim>
+								My first line!
+								This is on the same row as this text
+
+								A number:	10
+								Another:		10
+							</code></pre>
+						</div>
 					</section>
 
 					<section>
 						<h3>Läsa från fil</h3>
+
+						<pre><code class="cpp" data-trim>
+							#include &lt;fstream&gt; // ifstream
+						</code></pre>
+
+						<pre float><code class="cpp" data-trim data-line-numbers>
+							std::ifstream file("filepath");
+
+							if (file.is_open()) {
+
+								while (std::getline(file, line)) {
+									// Handle line
+								}
+
+								file.close();
+							}
+							else {
+								// Handle errors
+							}
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Läsa från fil</h3>
+
+						<div style="width: 50%; float: left; font-size: 0.7em;">
+							<pre><code class="cpp" data-trim>
+								#include &lt;iostream&gt; // cout
+								#include &lt;fstream&gt; // ifstream
+							</code></pre>
+
+							<pre float><code class="cpp" data-trim data-line-numbers>
+								std::string line;
+								std::ifstream file("datatype_sizes.ssv");
+
+								int line_counter = 0;
+								if (file.is_open()) {
+									while (std::getline(file, line)) {
+										std::cout << "line["
+											<< line_counter
+											<< "]\t"
+											<< line
+											<< std::endl;
+										line_counter += 1;
+									}
+									file.close();
+								}
+								else {
+									std::cout << "Unable to open file."
+									<< std::endl;
+								}
+							</code></pre>
+						</div>
+						<div style="width: 50%; float: right; font-size: 0.7em;">
+							<p>datatype_sizes.ssv</p>
+							<pre float><code class="txt" data-trim>
+								bool 1
+								char 1
+								int 8
+								float 8
+							</code></pre>
+
+							<p>Output</p>
+							<pre float><code class="txt" data-trim>
+								line[0] bool 1
+								line[1] char 1
+								line[2] int 8
+								line[3] float 8
+							</code></pre>
+						</div>
 					</section>
 				</section>
 
