@@ -335,6 +335,18 @@ int main()
 							*/
 						</code></pre>
 					</section>
+
+					<section>
+						<h3>Kommentarer</h3>
+						<pre data-id="code-cpp"><code class="cpp" data-trim data-line-numbers>
+							// One line of comments
+
+							/*
+								Multiple lines
+								of comments
+							*/
+						</code></pre>
+					</section>
 				</section>
 
 				<section>
@@ -456,7 +468,9 @@ int main()
 							sizeof(float)	// 4 bytes
 							sizeof(double)	// 8 bytes
 						</code></pre>
-
+					</section>
+					<section>
+						<h3>Storlek (i <em>bytes</em>)</h3>
 						<div style="display: inline-block">
 							<p>char</p>
 							<table class="memory" style="font-size: 0.8em;">
@@ -610,7 +624,7 @@ int main()
 						</div>
 					</section>
 
-					<section data-auto-animate>
+					<section>
 						<h3>Modifierare</h3>
 						<h4>För primitiva datatyper</h4>
 						<ul>
@@ -621,17 +635,34 @@ int main()
 						</ul>
 					</section>
 
-					<section data-auto-animate>
+					<section>
 						<h3>Modifierare</h3>
-						<h4>För primitiva datatyper</h4>
-						<p><b data-id="singed">signed</b>, <b>unsigned, short, long</b></p>
+						<p><b>signed, unsigned</b></p>
+
 						<pre><code class="cpp" data-trim>
-							// Example from my computer
-							short int	// 2 bytes,	-32'768 to 32'767
-							unsigned short int // 2 bytes,	0 to 65'535
-							unsigned int	// 4 bytes,	0 to 4'294'967'295
-							int		// 4 bytes,	-2'147'483'648 to 2'147'483'647
-							long int	// 8 bytes,	-(2^63) till (2^63)-1
+							int				// 4 bytes,	-2'147'483'648 to 2'147'483'647
+							signed int		// 4 bytes,	-2'147'483'648 to 2'147'483'647
+							unsigned int	// 4 bytes,	 0 to 4'294'967'295
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Modifierare</h3>
+						<p><b>short, long</b></p>
+
+						<pre><code class="cpp" data-trim>
+							int				// 4 bytes,	-2'147'483'648 to 2'147'483'647
+							short int		// 2 bytes,	-32'768 to 32'767
+							long int			// 8 bytes,	-(2^63) till (2^63)-1
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Modifierare</h3>
+
+						<pre><code class="cpp" data-trim>
+							short int				// 2 bytes,	-32'768 to 32'767
+							unsigned short int	// 2 bytes,	0 to 65'535
 						</code></pre>
 					</section>
 
@@ -657,23 +688,44 @@ int main()
 							<li><b>Deklarering</b></li>
 							<ul style="font-size: 0.8em;">
 								<li>Det existerar en variabel med namnet ...</li>
-								<li>Kan definieras flera gånger</li>
-								<li>Inget minne allokeras</li>
 							</ul>
 
-							<li><b>Definiering</b></li>
+							<li><b>Initiering</b></li>
 							<ul style="font-size: 0.8em;">
-								<li>Variabeln får värdet ...</li>
-								<li>Kan <b>endast</b> göras en gång</li>
-								<li>Minne allokeras för variabeln</li>
+								<li>Variabeln tilldelas sitt första värde</li>
+								<li>Det sker en gång</li>
+								<li>Efter detta kan värden <em>tilldelas</em></li>
 							</ul>
 						</ul>
 
 						<pre><code class="cpp" data-trim data-line-numbers>
 							int foo, bar; // Declaration of foo and bar
-							foo = 5; // Definition of foo
+							foo = 5; // Initialization of foo
 							
-							foo = bar; // Undefined behavior! bar not defined
+							foo = bar; // Undefined behavior! bar not initialized
+						</code></pre>
+					</section>
+				
+
+					<section>
+						<h3>Konstanter</h3>
+
+						<p>Ett värde som ej kan ändras</p>
+
+						<pre><code class="cpp" data-trim data-line-numbers>
+							const float PI = 3.14159f;
+							const int PLAYER_COUNT = 4;
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Konstanter</h3>
+
+						<p>Ett värde som ej kan ändras</p>
+
+						<pre><code class="cpp" data-trim data-line-numbers>
+							const float PI = 3.14159f;
+							PI = 2.7f; // Error!
 						</code></pre>
 					</section>
 				</section>
@@ -683,9 +735,6 @@ int main()
 						<h3>Kompilering</h3>
 					</section>
 
-					<section data-auto-animate>
-						<h3>Python är ett intepreterat språk</h3>
-					</section>
 					<section data-auto-animate>
 						<h3>Python är ett intepreterat språk</h3>
 						<p>Ditt program är instruktioner för en <b>intepretator</b></p>
@@ -700,20 +749,11 @@ int main()
 						<p>Ditt program är instruktioner för en <b>intepretator</b></p>
 						<pre><code data-trim>python.exe my_file.py</code></pre>
 					</section>
-					<section data-auto-animate>
-						<h3>Python är ett intepreterat språk</h3>
-						<p>Ditt program är instruktioner för en <b>intepretator</b></p>
-						<pre><code data-trim>python.exe my_file.py</code></pre>
-						<p>Programmet python.exe tar in din fil som argument</p>
-					</section>
 
 					<section data-auto-animate>
 						<p>Datorn läser intruktioner i maskinkod</p>
 						<pre data-id="code-animation"><code>... 0111 0101 1101 0110 1010 1100 1101 1010 1001 1010 1010 ...</code></pre>
-					</section>
-					<section data-auto-animate>
 						<p>Men detta är inte vad vi programmerar, eller?</p>
-						<pre data-id="code-animation"><code>... 0111 0101 1101 0110 1010 1100 1101 1010 1001 1010 1010 ...</code></pre>
 					</section>
 					<section data-auto-animate>
 						<p>Detta är vi programmerar</p>
@@ -724,9 +764,6 @@ for nr in numbers:
 						</code></pre>
 					</section>
 
-					<section data-auto-animate>
-						<h3>Programkod till maskinkod</h3>
-					</section>
 					<section data-auto-animate>
 						<h3>Programkod till maskinkod</h3>
 						<ul>
@@ -1706,7 +1743,7 @@ for nr in numbers:
 								<td>istream</td>
 							</tr>
 							<tr>
-								<td data-id="cout"><b>out</b></td>
+								<td data-id="cout"><b>cout</b></td>
 								<td data-id="output">output</td>
 								<td>ostream</td>
 							</tr>
@@ -1733,7 +1770,7 @@ for nr in numbers:
 								<td data-id="input">input</td>
 							</tr>
 							<tr>
-								<td data-id="cout"><b>out</b></td>
+								<td data-id="cout"><b>cout</b></td>
 								<td data-id="output">output</td>
 							</tr>
 						</table>
@@ -1754,86 +1791,6 @@ for nr in numbers:
 
 						<pre><code class="Linux-terminal" data-trim>
 							Hello world!
-						</code></pre>
-					</section>
-
-					<section data-auto-animate>
-						<h3>Utmatning i terminal</h3>
-
-						<pre><code class="cpp" data-trim data-line-numbers>
-							#include &lt;iostream&gt;
-
-							int main() {
-								int my_int = 5;
-								float my_float = 13.37f;
-								std::string my_string = "\"Don't quote me\" - Mattias";
-
-								std::cout << "my_int: " << my_int;
-								std::cout << "my_float: " << my_float;
-								std::cout << "my_string: " << my_string;
-								std::cout << std::endl;
-								return 0;
-							}
-						</code></pre>
-
-						<pre><code class="Linux-terminal" data-trim>
-							my_int: 5my_float: 13.37my_string: "Don't quote me" - Mattias
-						</code></pre>
-
-						<p>Svårt att läsa output, lägg till radbryte</p>
-					</section>
-
-					<section data-auto-animate>
-						<h3>Utmatning i terminal</h3>
-
-						<pre><code class="cpp" data-trim data-line-numbers>
-							#include &lt;iostream&gt;
-
-							int main() {
-								int my_int = 5;
-								float my_float = 13.37f;
-								std::string my_string = "\"Don't quote me\" - Mattias";
-
-								std::cout << "my_int: " << my_int;
-								std::cout << "\nmy_float: " << my_float;
-								std::cout << "\nmy_string: " << my_string;
-								std::cout << std::endl;
-								return 0;
-							}
-						</code></pre>
-
-						<pre><code class="Linux-terminal" data-trim>
-							my_int: 5
-							my_float: 13.37
-							my_string: "Don't quote me" - Mattias
-						</code></pre>
-						
-						<p>Behöver bara kalla cout <b>en</b> gång</p>
-					</section>
-
-					<section data-auto-animate>
-						<h3>Utmatning i terminal</h3>
-
-						<pre><code class="cpp" data-trim data-line-numbers>
-							#include &lt;iostream&gt;
-
-							int main() {
-								int my_int = 5;
-								float my_float = 13.37f;
-								std::string my_string = "\"Don't quote me\" - Mattias";
-
-								std::cout << "my_int: " << my_int
-									<< "\nmy_float: " << my_float
-									<< "\nmy_string: " << my_string
-									<< std::endl;
-								return 0;
-							}
-						</code></pre>
-
-						<pre><code data-trim>
-							my_int: 5
-							my_float: 13.37
-							my_string: "Don't quote me" - Mattias
 						</code></pre>
 					</section>
 
@@ -1919,11 +1876,92 @@ for nr in numbers:
 						</code></pre>
 					</section>
 
+					<section data-auto-animate>
+						<h3>Utmatning i terminal</h3>
+
+						<pre><code class="cpp" data-trim data-line-numbers>
+							#include &lt;iostream&gt;
+
+							int main() {
+								int my_int = 5;
+								float my_float = 13.37f;
+								std::string my_string = "\"Don't quote me\" - Mattias";
+
+								std::cout << "my_int: " << my_int;
+								std::cout << "my_float: " << my_float;
+								std::cout << "my_string: " << my_string;
+								std::cout << std::endl;
+								return 0;
+							}
+						</code></pre>
+
+						<pre><code class="Linux-terminal" data-trim>
+							my_int: 5my_float: 13.37my_string: "Don't quote me" - Mattias
+						</code></pre>
+
+						<p>Svårt att läsa output, lägg till radbryte</p>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Utmatning i terminal</h3>
+
+						<pre><code class="cpp" data-trim data-line-numbers>
+							#include &lt;iostream&gt;
+
+							int main() {
+								int my_int = 5;
+								float my_float = 13.37f;
+								std::string my_string = "\"Don't quote me\" - Mattias";
+
+								std::cout << "my_int: " << my_int;
+								std::cout << "\nmy_float: " << my_float;
+								std::cout << "\nmy_string: " << my_string;
+								std::cout << std::endl;
+								return 0;
+							}
+						</code></pre>
+
+						<pre><code class="Linux-terminal" data-trim>
+							my_int: 5
+							my_float: 13.37
+							my_string: "Don't quote me" - Mattias
+						</code></pre>
+						
+						<p>Behöver bara kalla cout <b>en</b> gång</p>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Utmatning i terminal</h3>
+
+						<pre><code class="cpp" data-trim data-line-numbers>
+							#include &lt;iostream&gt;
+
+							int main() {
+								int my_int = 5;
+								float my_float = 13.37f;
+								std::string my_string = "\"Don't quote me\" - Mattias";
+
+								std::cout << "my_int: " << my_int
+									<< "\nmy_float: " << my_float
+									<< "\nmy_string: " << my_string
+									<< std::endl;
+								return 0;
+							}
+						</code></pre>
+
+						<pre><code data-trim>
+							my_int: 5
+							my_float: 13.37
+							my_string: "Don't quote me" - Mattias
+						</code></pre>
+					</section>
+
 					<section>
 						<h3>Inmatning från terminal</h3>
 
 						<pre><code class="cpp" data-trim data-line-numbers>
 							#include &lt;iostream&gt;
+							#include &lt;string&gt;
 
 							int main() {
 								std::string name;
@@ -1945,6 +1983,7 @@ for nr in numbers:
 
 						<pre><code class="cpp" data-trim data-line-numbers>
 							#include &lt;iostream&gt;
+							#include &lt;string&gt;
 
 							int main() {
 								std::cout << "Enter a char and an int"
@@ -1955,7 +1994,6 @@ for nr in numbers:
 								std::cin >> my_char >> my_int;
 								my_char += 1; // Increment by 1
 								my_int += 1; // Increment by 1
-
 								std::cout << my_char << " " << my_int << std::endl;
 								return 0;
 							}
@@ -1987,7 +2025,7 @@ for nr in numbers:
 						</code></pre>
 
 						<pre float><code class="cpp" data-trim data-line-numbers>
-							std::ofstream file("textfile.txt");
+							std::ofstream file("filepath");
 
 							if (file.is_open()) {
 
@@ -2011,7 +2049,7 @@ for nr in numbers:
 							</code></pre>
 
 							<pre float><code class="cpp" data-trim data-line-numbers>
-								std::ofstream file("filepath");
+								std::ofstream file("textfile.txt");
 
 								if (file.is_open()) {
 									file << "My first line!\n";
@@ -2154,7 +2192,7 @@ for nr in numbers:
 
 						<ul>
 							<li>En samling element av samma datatyp</li>
-							<li>Element ligger sekvensiellt i datorns minne</li>
+							<li>Element ligger sekventiellt i datorns minne</li>
 							<li>Har inga egna funktioner, likt primitiva datatyper</li>
 						</ul>
 
@@ -2200,22 +2238,35 @@ for nr in numbers:
 						</ul>
 					</section>
 
-					<section>
+					<section data-auto-animate>
 						<h3>Array</h3>
 
-						<pre style="font-size: 0.5em"><code class="cpp" data-trim>
+						<pre style="font-size: 0.5em"><code class="cpp" data-trim data-line-numbers>
 							int my_ints[3];		// Array with 3 ints
 							my_ints[0] = 11;
 							my_ints[1] = 22;
 							my_ints[2] = 33;
+						</code></pre>
+					</section>
 
+					<section data-auto-animate>
+						<h3>Array</h3>
+
+						<pre style="font-size: 0.5em"><code class="cpp" data-trim data-line-numbers>
 							float my_floats[5] = {	// Array with 5 floats
 								0.14159f,
-								0.12345678f
+								0.12345678f,
 								13.37f,
-								82.92f
+								82.92f,
+								1.2345f
 							}
+						</code></pre>
+					</section>
 
+					<section data-auto-animate>
+						<h3>Array</h3>
+
+						<pre style="font-size: 0.5em"><code class="cpp" data-trim data-line-numbers>
 							const int STUDENT_COUNT = 170;
 							// Initialize all elements to 'B'
 							char student_grades[STUDENT_COUNT] = { 'B' };
@@ -2256,22 +2307,38 @@ for nr in numbers:
 						</code></pre>
 					</section>
 
-					<section>
+					<section data-auto-animate>
 						<h3>Flerdimensionell Array</h3>
 
 						<pre><code class="cpp" data-trim>
 							// Array of size 3;
 							// each element is an array of ints of size 4
 							int int_table[3][4];
+						</code></pre>
+					</section>
 
+					<section data-auto-animate>
+						<h3>Flerdimensionell Array</h3>
+
+						<pre><code class="cpp" data-trim>
 							// 28 rows
 							// 4 columns
-							bool plane_seat_occupation[28][4];
+							bool plane_seat_occupation[28][4] = { false };
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Flerdimensionell Array</h3>
+
+						<pre><code class="cpp" data-trim>
+							int my_5D_array[100][100][100][100][100];
 						</code></pre>
 					</section>
 
 					<section>
 						<h3>Flerdimensionell Array</h3>
+
+						<p>Dessa initieringar är ekvivalent</p>
 
 						<pre style="font-size: 0.5em;"><code class="cpp" data-trim>
 							// Array of size 3;
@@ -2282,12 +2349,6 @@ for nr in numbers:
 								{8, 9, 10, 11}
 							}
 							int int_table[3][4] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
-
-							// 28 rows
-							// 4 columns
-							bool plane_seat_occupation[28][4] = { false }; // Set all to false
-
-							int my_5D_array[100][100][100][100][100];
 						</code></pre>
 
 						<table style="font-size: 0.8em;">
@@ -2313,24 +2374,6 @@ for nr in numbers:
 					</section>
 
 					<section>
-						<h3>Flerdimensionell Array</h3>
-
-						<p>Dessa initieringar är ekvivalent</p>
-						
-						<pre style="font-size: 0.5em;"><code class="cpp" data-trim>
-							int int_table[3][4] = {
-								{0, 1, 2, 3},
-								{4, 5, 6, 7},
-								{8, 9, 10, 11}
-							}
-						</code></pre>
-
-						<pre style="font-size: 0.5em;"><code class="cpp" data-trim>
-							int int_table[3][4] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
-						</code></pre>
-					</section>
-
-					<section>
 						<h3>Dynamisk Array</h3>
 
 						<ul style="font-size: 0.8em;">
@@ -2343,18 +2386,14 @@ for nr in numbers:
 						</ul>
 
 						<pre style="font-size: 0.5em;"><code class="cpp" data-trim data-line-numbers>
-							// Declare pointer for array
-							int* dynamic_array;
 							
-							// Allocate memory for 10 ints
-							dynamic_array = new int[10]; 
+							int* dynamic_array; // Declare pointer for array
 
-							// Deallocate memory
-							delete[] dynamic_array;
+							dynamic_array = new int[10];	// Allocate memory for 10 ints
+							dynamic_array[4] = 5;			// Use as a normal array
+							delete[] dynamic_array;			// Deallocate memory
 
-							// Allocate memory for 100 ints
-							dynamic_array = new int[100];
-
+							dynamic_array = new int[100]; // Allocate memory for 100 ints
 							delete[] dynamic_array;
 						</code></pre>
 
